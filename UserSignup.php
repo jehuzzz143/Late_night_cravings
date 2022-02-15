@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<p class="title">Sign Up Form</p>
     <form method='POST' action="">
     <label for="User-First_Name">First name:</label>
     <input type="text" name="User-First_Name" required><br>
@@ -28,7 +29,7 @@
 
     <label for="User-Confirm_Password">Confirm Password:</label>
     <input type="password" name="User-Confirm_Password" required><br>
-    <input type="Submit" name="BtnSignup"></input>
+    <input class="loginbtn" type="Submit" name="BtnSignup" value="Sign Up"></input>
     </form>
 </body> 
 </html>

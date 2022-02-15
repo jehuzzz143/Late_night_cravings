@@ -9,48 +9,36 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/product.css">
     <link rel="stylesheet" href="css/footer.css">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="css/login.css">
 
+    <!-- fontawSome -->
+    
+    <script src="https://kit.fontawesome.com/b5369de163.js" crossorigin="anonymous"></script>
+    
     <!-- Data aos -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar" >
-    <div class="content container is-full">
-      <div class="logo">
-        <a href="#" class="change-color">LN's Crazings</a>
-      </div>
-      <ul class="menu-list">
-        <div class="icon cancel-btn">
-          <i class="fas fa-times"></i>
-        </div>
-        <li><a href="#" class="change-color">Home</a></li>
-        <li><a href="#" class="change-color">About</a></li>
-        <li><a href="#" class="change-color">Services</a></li>
-        <li><a href="#" class="change-color">Features</a></li>
-        <li><a href="#" class="change-color">Contact</a></li>
-      </ul>
-      <div class="icon menu-btn">
-        <i class="fas fa-bars"></i>
-      </div>
-    </div>
-  </nav>
+<!-- Navigation Menu -->
+<?php 
+  include ("nav.php");
+?>
   <!-- Paralax -->
-  <div class="banner" style="background-color:red;">
+  <div class="banner" style="background-color:red;" id="home">
     <div class="container-fluid " style="padding:0;">
     <div class="parallax">
         <div class="container">
         <center>
-            <p class="text-slogan" data-aos="fade-up">PANCIT CANTON</p> 
+            <p class="text-slogan" data-aos="fade-up" >PANCIT CANTON</p> 
            
         </center>
         </div>
+        <div id="loginView">  </div>
     </div>
     </div>
-      
   </div>
+ 
+  
     <!-- 3d slider -->
     <!-- <center>
     <div class="d-slider">
@@ -65,7 +53,12 @@
     </div>
     </center> -->
     <br><br>
+<!-- Login Form -->
+  <?php 
+    include("login.php");
+  ?>
 <!-- about -->
+
   <div class="about">
     <div class="content">
       <div class="title">About About About ABout About About aBout About</div>

@@ -69,6 +69,9 @@ html{
     color: white;
     transition:.3s;
 }
+ .change-color:hover{
+  color:black !important;
+}
 .menu-list li a:hover{
   color: #007bff;
 }

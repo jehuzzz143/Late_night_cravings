@@ -1,6 +1,6 @@
 <?php
-include 'db_connection.php';
-$conn = OpenCon();
+// include 'db_connection.php';
+// $conn = OpenCon();
         //Birthday Age Calculator 
     if(isset($_POST['BtnSignup'])){
 
