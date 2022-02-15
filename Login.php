@@ -18,7 +18,7 @@
 
     <!-- Login Form -->
 
-    <div class="container  login-container" id="login" style="border:1px;" style="display:none;">
+    <div class="container  login-container" id="login"  style="display:none;">
         
         <p class="login-close" onClick="loginClose()"><i class="fa-duotone fa-circle-xmark"></i></p>
         <p class="title">Login is required before purchasing </p>

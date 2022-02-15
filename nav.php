@@ -9,9 +9,9 @@
           <i class="fas fa-times"></i>
         </div>
         <li><a href="#home" class="change-color">Home</a></li>
-        <li><a href="#" class="change-color">About</a></li>
-        <li><a href="#" class="change-color">Services</a></li>
-        <li><a href="#" class="change-color">Features</a></li>
+        <li><a href="#about" class="change-color">About</a></li>
+        <li><a href="#menu" class="change-color">Menu</a></li>
+    
         <li><a href="#loginView" onClick="login()"class="change-color">Login</a></li>
       </ul>
       <div class="icon menu-btn">

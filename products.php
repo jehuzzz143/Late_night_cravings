@@ -1,5 +1,9 @@
-
-<div class="container-fluid" style="margin-bottom:20px; padding-right:30px; padding-left:30px; ">
+<center>
+  <div class="about">
+    <div class="title">OUR MENU </div>
+  </div>
+</center>
+<div class="container" style="margin-bottom:20px;  ">
    
   <div class="columns is-mobile is-multiline">
     

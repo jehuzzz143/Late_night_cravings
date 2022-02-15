@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticky Navigation Bar | CodingNepal</title>
+    <title>LN' Cravings</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/product.css">
@@ -29,7 +29,8 @@
     <div class="parallax">
         <div class="container">
         <center>
-            <p class="text-slogan" data-aos="fade-up" >PANCIT CANTON</p> 
+            <p class="text-slogan" data-aos="fade-up" >YOU DON'T NEED TO SLEEP EARLY</p> 
+           
            
         </center>
         </div>
@@ -58,18 +59,34 @@
     include("login.php");
   ?>
 <!-- about -->
-
-  <div class="about">
-    <div class="content">
-      <div class="title">About About About ABout About About aBout About</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo impedit atque consequatur! Iusto distinctio temporibus repellendus labore odit adipisci harum ipsa beatae natus, eum eius, hic aperiam odio! Quasi molestias magnam illo voluptatem iusto ipsam blanditiis, tempore cumque reiciendis quaerat vero tenetur, sequi dolores libero voluptas vitae voluptate placeat dolorum modi ipsa nisi repellat facilis aliquam asperiores. Aut nam repellat harum quas saepe dolorum voluptates ratione, itaque consectetur explicabo a facilis rem mollitia maxime repudiandae fuga reprehenderit, odio cum incidunt labore molestiae quis non perferendis ipsam. Illum, in, deserunt. Ipsa.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero, nam assumenda, at culpa quos perspiciatis ratione ea modi! Natus sapiente a, explicabo sit quisquam eligendi esse provident eos enim doloremque blanditiis aut placeat veniam, libero nostrum quae. Ipsam, iste reprehenderit minima accusantium illo dolorem recusandae, ipsa autem quidem reiciendis a mollitia sit tenetur.</p>
-      </div>
+  <div class="container" style="padding:0;">
+    <div class="about" id="about" style="padding:0px;">
+      <div class="container" >
+        <div class="title">Background History </div>
+        <p>We started out as karinderya we transitioned to "Late Night Cravings" to cope with the new normal. We sleep in the Morning, attend classes in the Afternoon and we cook and deliver foods during night time. Our main customer target are those who are looking for specific food when all other restaurants are either closed or unavailable for delivery.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero, nam assumenda, at culpa quos perspiciatis ratione ea modi! Natus sapiente a, explicabo sit quisquam eligendi esse provident eos enim doloremque blanditiis aut placeat veniam, libero nostrum quae. Ipsam, iste reprehenderit minima accusantium illo dolorem recusandae, ipsa autem quidem reiciendis a mollitia sit tenetur.</p>
+        </div>
+        <div id="menu" style="opacity:0; margin-top;-100px;">  </div>
+    </div>
   </div>
+  <br><br>
 <!-- products -->
 <?php 
     include ("products.php");
 ?>
+
+<!-- PARALLAX 2 -->
+<div class="container is-fluid" id="parallax-2">
+    <div class="container">
+      <center>
+        <p class="text-slogan2" data-aos="fade-up">ORDER NOW</p>
+    
+        
+      </center>
+    </div>
+  </div>
+<!-- END PARALLAX 2 -->
+
 <!-- FOOTER -->
 <?php 
     include ("footer.php");
