@@ -8,14 +8,15 @@ $conn = OpenCon();
         $Email = $_POST['User-Email_Address'];
         $Password = $_POST['User-Password'];
 
-        $CredChk = "SELECT * FROM tbl_users WHERE str_Email = '$Email' AND str_Password = '$Password'";
+        $CredChk = "SELECT * FROM tbl_users WHERE user_Email = '$Email' AND user_Password = '$Password'";
         $Credresult = $conn->query($CredChk);
-
+        echo "zz".$Credresult -> num_rows;
         if($Credresult -> num_rows > 0)
         {
             ?>
                 <script>
                     alert ("Hello Admin");
+                    location.href = 'admin/';
                 </script>
             <?php
             CloseCon($conn);
