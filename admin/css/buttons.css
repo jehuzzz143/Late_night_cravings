@@ -1,0 +1,80 @@
+/* BUTTONS */
+.button_add {
+    display: flex;
+    height: 50px;
+    padding: 0;
+    background: #009578;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Quicksand", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .button_add:hover {
+    background: #008168;
+  }
+  
+  .button_add:active {
+    background: #006e58;
+  }
+  
+  .button__text,
+  .button__icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    color: #fff;
+    height: 100%;
+  }
+  
+  .button__icon {
+    font-size: 1.5em;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .button-save{
+    color: #fff;
+    padding: 5px 18px;
+    background: #7d2ae8;
+    font-size: 16px;
+    transition:.3s;
+  }
+  .button-save:hover{
+    background: #8d39fa;
+  }
+  .button-cancel{
+    color: black;
+    padding: 5px 18px;
+    background: 
+    #E4E9F7;
+    font-size: 16px;
+    transition:.3s;
+  }
+  .button-cancel:hover{
+    background: white;
+  }
+  .button-update{
+    color: white;
+    padding: 5px 18px;
+    background:#69B66A;
+    font-size: 18px;
+    transition:.3s;
+  }
+  .button-update:hover{
+    background:  #499C4A;
+  }
+  .button-delete{
+    color: white;
+    padding: 5px 18px;
+    background:#B66969;
+    font-size: 18px;
+   
+    transition:.3s;
+  }
+  .button-delete:hover{
+    background: #8E5252;
+  }

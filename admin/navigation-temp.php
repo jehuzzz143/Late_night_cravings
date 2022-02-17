@@ -3,7 +3,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="logo.png" alt="">
+                    <img src="css/chef.png" alt="">
                 </span>
 
                 <div class="text logo-text">
@@ -27,9 +27,9 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="product.php">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Revenue</span>
+                            <span class="text nav-text">Products</span>
                         </a>
                     </li>
 
@@ -95,7 +95,7 @@
         const body = document.querySelector('body'),
       sidebar = body.querySelector('nav'),
       toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
+  
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
 
@@ -104,9 +104,7 @@ toggle.addEventListener("click" , () =>{
     sidebar.classList.toggle("close");
 })
 
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
+
 
 modeSwitch.addEventListener("click" , () =>{
     body.classList.toggle("dark");
