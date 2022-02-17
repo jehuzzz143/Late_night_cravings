@@ -17,6 +17,8 @@
     
     <!-- Data aos -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- icons -->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </head>
 <body>
 <!-- Navigation Menu -->
@@ -74,6 +76,19 @@
 <?php 
     include ("products.php");
 ?>
+
+<div class="container" id="text-w" style="margin-top:60px;margin-bottom:60px;padding-right:0;padding-left:0;"  data-aos="fade-up">
+
+  <div class="title">Where are we located? </div>
+
+  <div class="map-responsive ">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3861.231110933342!2d121.17256990015356!3d14.585902631297714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3397bf53fd15d2b1%3A0xa23619ce8136cfc6!2sAntipolo%20Cathedral%2C%20Dela%20Paz%20Street%2C%20Antipolo%2C%20Rizal!3m2!1d14.587638!2d121.17665649999999!4m5!1s0x3397bf550eb946f5%3A0x5cac1adffaaefc07!2sGeneral%20Luna%20St%2C%20Antipolo%2C%201870%20Rizal!3m2!1d14.5854184!2d121.17301169999999!5e0!3m2!1sen!2sph!4v1645088221664!5m2!1sen!2sph" 
+  width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>  
+</div>
+</div>
+<div class="container">
+
+</div>
 
 <!-- PARALLAX 2 -->
 <div class="container is-fluid" id="parallax-2">

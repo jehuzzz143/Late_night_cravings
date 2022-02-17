@@ -81,11 +81,12 @@ html{
 }
 .about .title{
   font-size: 38px;
-  font-weight: 700;
+  
 }
 .about p{
   padding-top: 20px;
   text-align: justify;
+  font-size:20px;
 }
 .icon{
   color: #fff;
@@ -256,4 +257,24 @@ html{
     background-size: cover;
   
   }
+
+
+
+/* map */
+.map-responsive{
+  overflow:hidden;
+  padding-bottom:40%;
+  position:relative;
+  height:0;
+
+}
+.map-responsive iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+  padding: 0px px;
+}
+
   

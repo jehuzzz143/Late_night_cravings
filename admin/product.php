@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/product.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/buttons.css">
+
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
@@ -71,7 +72,9 @@
             </table>
         </div>
         
+        
     </section>
+    
 
     <!-- Add Product Modal -->
     <div class="popup">

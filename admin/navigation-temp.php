@@ -20,7 +20,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="dashboard.php">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
@@ -34,9 +34,9 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="pending.php">
                             <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Notifications</span>
+                            <span class="text nav-text">Orders</span>
                         </a>
                     </li>
 

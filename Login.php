@@ -20,7 +20,7 @@
 
     <div class="container  login-container" id="login"  style="display:none;">
         
-        <p class="login-close" onClick="loginClose()"><i class="fa-duotone fa-circle-xmark"></i></p>
+        <p class="login-close" onClick="loginClose()"><ion-icon name="close-outline"></ion-icon></p>
         <p class="title">Login is required before purchasing </p>
 
         <div class="columns">
@@ -37,7 +37,7 @@
             </form>
             </div>
             <div class="column" id="signup" style="display:none;margin-top:-60px;">
-                <p class="login-close" onClick="signupclose()"><i class="fa-duotone fa-circle-xmark"></i></p>
+                <p class="login-close" onClick="signupclose()"><ion-icon name="close-outline"></ion-icon></i></p>
                 <?php 
                     include("UserSignup.php");
                 ?>
