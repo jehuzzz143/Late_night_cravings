@@ -35,43 +35,34 @@
         <table>
             <tr>
                 <th>#</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>identifiant </th>
-                <th>date de naissance </th>
-                <th>salaire</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Product Type</th>
                 <th>Action</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Jean</td>
-                <td>leBon</td>
-                <td>1368</td>
-                <td>18 Nov 1962</td>
-                <td>5000$</td>
-                <td>
-                    <button class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>
-                    <button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>
-                    <button></button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Jean</td>
-                <td>leBon</td>
-                <td>1368</td>
-                <td>18 Nov 1962</td>
-                <td>5000$</td>
-                <td>
-                    <button class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>
-                    <button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>
-                    <button></button>
-                </td>
-            </tr>
+              <?php
+              include "../db_connection.php";
+              $view = "Select * from tbl_products";
+              $result = $conn->query($view);
+              while($row=$result->fetch_assoc()){
+                echo "<tr>";
+                echo "<td>".$row['ID'];
+                echo "<td>".$row['prod_name'];
+                echo "<td>".$row['prod_desc'];
+                echo "<td>".$row['prod_type'];
+                echo "<td>";
+                echo '<button name = "subedit" type = "submitedit" value="'.$row['ID'].'" class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>';
+                echo '<button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>';
+                echo "<button></button>";
+                echo " </td>";
+                echo "</tr>";
+            }
+            ?>
             
             </table>
         </div>
-        
+           
         
     </section>
     
@@ -83,12 +74,25 @@
       <div class="close"><ion-icon name="close-circle-outline"></ion-icon></div>
     </header>
     <div class="content">
-     
+      <!--PRODUCT INPUTS -->
+    <form method = POST action = "performAddProd.php">
+    <label for="prodname">Product Name:</label>
+    <input type="text" id="prodname" name="prodname" required><br>
+    <label for="proddesc">Product Description:</label>
+    <input type="text" id="proddesc" name="proddesc" requiered><br>
+    <label for="prodtype">Product Type:</label>
+    <select id="prodtype" name="prodtype" required>
+    <option value="breakfast">Breakfast</option>
+    <option value="lunch">Lunch</option>
+    <option value="merienda">Merienda</option>
+    <option value="dinner">Dinner</option>
+    </select>
+
       <div class="field">
-        <button class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
+        <button type = "submit" formmethod = "post" name = subAddProd class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
         <button class="button-cancel">Cancel</button>
       </div>
-      
+</form>
     </div>
   </div>
   <script>
@@ -160,12 +164,45 @@
       <div class="close"><ion-icon name="close-circle-outline"></ion-icon></div>
     </header>
     <div class="content">
-     
-      <div class="field">
-        <button class="button-save">Save </ion-icon></button>
-        <button class="button-cancelupdate button-cancel">Cancel</button>
-      </div>
+      <?php
+       include "../db_connection.php";
+      if(isset($POST['submitedit'])){
+
+      $ID = $_POST['subedit'];
       
+
+      $sql = "SELECT * FROM tbl_products";
+
+      $result = $conn->query($sql);
+
+      if($result->num_rows>0){
+        
+        $row = mysqli_fetch_array($result);
+        
+        $prodname = $row['prod_name'];
+        $proddesc = $row['prod_desc'];
+        $prodtype = $row['prod_type'];
+      }
+    }
+    ?>
+    
+      <label for="prodname">Product Name:</label>
+      <input type="text" id="prodname" name="prodname" value ="<?php echo $prodname ?>" required><br>
+      <label for="proddesc">Product Description:</label>
+      <input type="text" id="proddesc" name="proddesc" requiered><br>
+      <label for="prodtype">Product Type:</label>
+      <select id="prodtype" name="prodtype" required>
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="merienda">Merienda</option>
+      <option value="dinner">Dinner</option>
+      </select>
+  
+        <div class="field">
+          <button type = "submit" formmethod = "post" name = subAddProd class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
+          <button class="button-cancel">Cancel</button>
+        </div>
+ 
     </div>
   </div>
   <script>

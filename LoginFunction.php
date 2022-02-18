@@ -1,6 +1,5 @@
 <?php
 include 'db_connection.php';
-$conn = OpenCon();
 
 
     if(isset($_POST['BtnLogin']))
