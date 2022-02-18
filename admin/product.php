@@ -16,8 +16,10 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
     <!--<title>Dashboard Sidebar Menu</title>--> 
-    <!-- Buttons Js -->
+    <!-- icons Js -->
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
     <!-- navigation -->
@@ -47,11 +49,19 @@
               $result = $conn->query($view);
               while($row=$result->fetch_assoc()){
                 echo "<tr>";
-                echo "<td>".$row['ID'];
-                echo "<td>".$row['prod_name'];
-                echo "<td>".$row['prod_desc'];
-                echo "<td>".$row['prod_type'];
+                echo "<td>".$row['ID']."</td>";
+                echo "<td>".$row['prod_name']."</td>";
+                echo "<td>".$row['prod_desc']."</td>";
+                echo "<td>".$row['prod_type']."</td>";
+               
+                echo "<td style='display:none';>";
+                echo "<p>".$row['ID']."</p>";
+                echo "<p>".$row['prod_name']."</p>";
+                echo "<p>".$row['prod_desc']."</p>";
+                echo "<p>".$row['prod_type']."</p>";
+                echo "</td>";
                 echo "<td>";
+                
                 echo '<button name = "subedit" type = "submitedit" value="'.$row['ID'].'" class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>';
                 echo '<button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>';
                 echo "<button></button>";
@@ -143,6 +153,15 @@
         deleteBtn[i].onclick = function(e) {
             e.preventDefault();
             popupDelete.classList.toggle("show");
+
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").find("p").map(function(){
+          return $(this).text();
+        }).get();
+
+            console.log(data);
+        // get the input element using Id then document.getElementBy("input").value=data[0];
+
         }
     }
    
@@ -220,6 +239,14 @@
         updateBtn[i].onclick = function(e) {
             e.preventDefault();
             popupUpdate.classList.toggle("show");
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").find("p").map(function(){
+              return $(this).text();
+            }).get();
+
+            console.log(data);
+            // get the input element using Id then document.getElementBy("input").value=data[0];
         }
     }
    
