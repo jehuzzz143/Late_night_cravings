@@ -205,8 +205,8 @@
     }
     ?>
     
-      <label for="prodname">Product Name:</label>
-      <input type="text" id="prodname" name="prodname" value ="<?php echo $prodname ?>" required><br>
+      <label for="prodnameedit">Product Name:</label>
+      <input type="text" id="prodnameedit" name="prodname"  required><br>
       <label for="proddesc">Product Description:</label>
       <input type="text" id="proddesc" name="proddesc" requiered><br>
       <label for="prodtype">Product Type:</label>
@@ -247,6 +247,7 @@
 
             console.log(data);
             // get the input element using Id then document.getElementBy("input").value=data[0];
+            document.getElementById("prodnameedit").value=data[1];
         }
     }
    
