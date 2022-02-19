@@ -40,6 +40,7 @@
                 <th>Product Name</th>
                 <th>Description</th>
                 <th>Product Type</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
             <tr>
@@ -53,7 +54,7 @@
                 echo "<td>".$row['prod_name']."</td>";
                 echo "<td>".$row['prod_desc']."</td>";
                 echo "<td>".$row['prod_type']."</td>";
-               
+                echo "<td><img src = 'prod_images/".$row['prod_image']."'</td>";
                 echo "<td style='display:none';>";
                 echo "<p>".$row['ID']."</p>";
                 echo "<p>".$row['prod_name']."</p>";
@@ -85,7 +86,7 @@
     </header>
     <div class="content">
       <!--PRODUCT INPUTS -->
-    <form method = POST action = "performAddProd.php">
+    <form method = POST action = "performAddProd.php" enctype="multipart/form-data">
     <label for="prodname">Product Name:</label>
     <input type="text" id="prodname" name="prodname" required><br>
     <label for="proddesc">Product Description:</label>
@@ -96,10 +97,12 @@
     <option value="lunch">Lunch</option>
     <option value="merienda">Merienda</option>
     <option value="dinner">Dinner</option>
-    </select>
+    </select><br>
+    <label for="file">Product Picture:</label>
+    <input type="file" id="file" name="file">
 
       <div class="field">
-        <button type = "submit" formmethod = "post" name = subAddProd class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
+        <button type = "submit" formmethod = "post" name = "subAddProd" class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
         <button class="button-cancel">Cancel</button>
       </div>
 </form>
@@ -130,12 +133,26 @@
       <div class="close"><ion-icon name="close-circle-outline"></ion-icon></div>
     </header>
     <div class="content">
-     
+    <form method = POST action = "performDeleteProd.php">
+    <input type = "hidden" id = "prodidedit1" name = "prodidedit1">
+      <label for="prodnameedit">Product Name:</label>
+      <input type="text" id = "prodnameedit1" name = "prodnameedit1"  readonly><br>
+      <label for= "proddescedit">Product Description:</label>
+      <input type="text" id = "proddescedit1" name = "proddescedit1" readonly><br>
+      <label for= "prodtypeedit">Product Type:</label>
+      <select id= "prodtypeedit1" name = "prodtypeedit1" readonly>
+      <option disabled value="breakfast">Breakfast</option>
+      <option disabled value="lunch">Lunch</option>
+      <option disabled value="merienda">Merienda</option>
+      <option disabled value="dinner">Dinner</option>
+      </select>
+      <img src = "prod_images/CAPTURE.png" name = "prodimageedit1"></img>
+      
       <div class="field">
-        <button class="button-delete">Delete </ion-icon></button>
+        <button type = "submit" formmethod = "post" name = "deleteProd" class="button-delete">Delete </ion-icon></button>
         <button class="button-cancelDelete button-cancel">Cancel</button>
       </div>
-      
+  </form>
     </div>
   </div>
   <script>
@@ -160,6 +177,13 @@
         }).get();
 
             console.log(data);
+            // get the input element using Id then document.getElementBy("input").value=data[0];
+            
+            document.getElementById("prodnameedit1").value=data[1];
+            document.getElementById("proddescedit1").value=data[2];
+            document.getElementById("prodtypeedit1").value=data[3];
+            document.getElementById("prodidedit1").value=data[0];
+            document.getElementById("prodimageedit1").value=data[4];
         // get the input element using Id then document.getElementBy("input").value=data[0];
 
         }
@@ -204,24 +228,27 @@
       }
     }
     ?>
-    
+    <form method = POST action = "subEditProd.php">
+      <input type = "hidden" id = "prodidedit" name = "prodidedit">
       <label for="prodnameedit">Product Name:</label>
-      <input type="text" id="prodnameedit" name="prodname"  required><br>
-      <label for="proddesc">Product Description:</label>
-      <input type="text" id="proddesc" name="proddesc" requiered><br>
-      <label for="prodtype">Product Type:</label>
-      <select id="prodtype" name="prodtype" required>
+      <input type="text" id = "prodnameedit" name = "prodnameedit"  required><br>
+      <label for= "proddescedit">Product Description:</label>
+      <input type="text" id = "proddescedit" name = "proddescedit" required><br>
+      <label for= "prodtypeedit">Product Type:</label>
+      <select id= "prodtypeedit" name = "prodtypeedit" required>
       <option value="breakfast">Breakfast</option>
       <option value="lunch">Lunch</option>
       <option value="merienda">Merienda</option>
       <option value="dinner">Dinner</option>
-      </select>
+      </select><br>
+      <img src = "prod_images/" id = "prodimageedit">
+      
   
         <div class="field">
-          <button type = "submit" formmethod = "post" name = subAddProd class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
+          <button type = "submit" formmethod = "post" name = "subEditProd" class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
           <button class="button-cancel">Cancel</button>
         </div>
- 
+  </form>
     </div>
   </div>
   <script>
@@ -247,9 +274,15 @@
 
             console.log(data);
             // get the input element using Id then document.getElementBy("input").value=data[0];
+            
             document.getElementById("prodnameedit").value=data[1];
+            document.getElementById("proddescedit").value=data[2];
+            document.getElementById("prodtypeedit").value=data[3];
+            document.getElementById("prodimageedit").getAttribute('src').value=data[4];
+            
         }
     }
+   
    
     copyUpdate = fieldDelete.querySelector("button");
     // viewBtnDelete.onclick = ()=>{
