@@ -13,20 +13,20 @@
         <li><a href="#menu" class="change-color">Menu</a></li>
         <?php
         session_start();
-      // Check if the user is logged in
-      if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
-      { // This only show for NOT logged in visitors
+        // Check if the user is logged in
+          if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
+          { // This only show for NOT logged in visitors
+            ?>
+              <li><a href="#loginView" onClick="login()" class="change-color">Login</a></li>
+            <?php
+          }
+          else 
+          { 
+            ?>
+             <li><a class="change-color update-modal">Profile</a></li>
+           <?php
+        } 
         ?>
-          <li><a href="#loginView" onClick="login()" class="change-color">Login</a></li>
-        <?php
-      }
-      else 
-      { 
-        ?>
-         <li><a class="change-color update-modal">Profile</a></li>
-       <?php
-      } 
-      ?>
       </ul>
       <div class="icon menu-btn">
         <i class="fas fa-bars"></i>

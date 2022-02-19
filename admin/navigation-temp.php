@@ -1,4 +1,19 @@
 
+    <?php
+        session_start();
+        if($_SESSION["usertype"]=="admin" || $_SESSION["loggedin"] == true)
+          { // This only show for logged in admin
+            
+          }
+          else 
+          { 
+            ?>
+             <script>
+                    location.href = '..\\index.php';
+            </script>
+           <?php
+          }
+    ?>
     <nav class="sidebar close">
         <header>
             <div class="image-text">

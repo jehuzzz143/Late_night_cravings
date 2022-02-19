@@ -12,6 +12,10 @@ include 'db_connection.php';
         $Credresult -> num_rows;
         if($Credresult -> num_rows > 0)
         {
+            session_start();
+            $_SESSION["loggedin"] = true;
+            $_SESSION["usertype"] = "admin";
+            
             $row = mysqli_fetch_array($Credresult);
             if($row['user_Email']=="admin"){
             ?>
@@ -23,7 +27,7 @@ include 'db_connection.php';
             CloseCon($conn);
             }
             else{
-                session_start();
+                
                 
                 $_SESSION['ID'] = $row['user_ID'];
                 $_SESSION['Fullname'] = $row['user_Fullname'];
