@@ -32,6 +32,8 @@
         <div class="container">
         <center>
             <p class="text-slogan" data-aos="fade-up" >YOU DON'T NEED TO SLEEP EARLY</p> 
+           
+           
         </center>
         </div>
         <div id="loginView">  </div>
