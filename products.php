@@ -7,85 +7,35 @@
    
   <div class="columns is-mobile is-multiline">
     
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      <div class="column is-2 padding-gall" stlye="background-color:red;">
-        <div class="container zoomInside">
-          <img class="image-gall zoom" src="css/photos/f1.jfif" alt="Review Photos">
-        </div>
-        <div >
-            <div class="columns">
-                <div class="column"><p class="product-name">Pork Sisig asdasdsds</p></div>
-                <div class="column is-3"><i><b>QTY</b> - 40</i></div>
-            </div>
-            
-            <small class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero,</small>
-        </div>
-      </div>
-      
 
+      <?php
+              include "db_connection.php";
+              $view = "Select * from tbl_products";
+              $result = $conn->query($view);
+              while($row=$result->fetch_assoc()){
+
+                $prodname = $row['prod_name'];
+                $proddesc = $row['prod_desc'];
+                $prodtype = $row['prod_type'];
+                $prodimage = $row['prod_image'];
+                $prodimgpath = "admin/prod_images/".$prodimage
+                ?>
+                <div class="column is-2 padding-gall" stlye="background-color:red;">
+                  <div class="container zoomInside">
+                    <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+                  </div>
+                <div>
+                      <div class="columns">
+                          <div class="column"><p class="product-name"> <?php echo $prodname ?> </p></div>
+                         
+                      </div>
+                      
+                      <small class="product-description"><?php echo $proddesc ?></small>
+                  </div>
+                </div> 
+                <?php  
+            }
+        ?>
+      
   </div>
 </div>

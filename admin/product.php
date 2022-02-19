@@ -54,12 +54,13 @@
                 echo "<td>".$row['prod_name']."</td>";
                 echo "<td>".$row['prod_desc']."</td>";
                 echo "<td>".$row['prod_type']."</td>";
-                echo "<td><img src = 'prod_images/".$row['prod_image']."'</td>";
+                echo "<td><img height='50px' width='50px' src = 'prod_images/".$row['prod_image']."'</td>";
                 echo "<td style='display:none';>";
                 echo "<p>".$row['ID']."</p>";
                 echo "<p>".$row['prod_name']."</p>";
                 echo "<p>".$row['prod_desc']."</p>";
                 echo "<p>".$row['prod_type']."</p>";
+                echo "<p>".$row['prod_image']."</p>";
                 echo "</td>";
                 echo "<td>";
                 
@@ -246,7 +247,7 @@
   
         <div class="field">
           <button type = "submit" formmethod = "post" name = "subEditProd" class="button-save">Save <ion-icon name="save-outline"></ion-icon></button>
-          <button class="button-cancel">Cancel</button>
+          <button type = "button" class="button-cancelupdate button-cancel">Cancel</button>
         </div>
   </form>
     </div>
@@ -278,7 +279,8 @@
             document.getElementById("prodnameedit").value=data[1];
             document.getElementById("proddescedit").value=data[2];
             document.getElementById("prodtypeedit").value=data[3];
-            document.getElementById("prodimageedit").getAttribute('src').value=data[4];
+            document.getElementById("prodimageedit").src="prod_images/"+data[4];
+
             
         }
     }
