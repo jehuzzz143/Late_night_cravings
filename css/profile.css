@@ -1,0 +1,90 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    font-family: arial;
+    position:fixed;
+    margin-left:110px;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #009879;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  /* table */
+  .table-title{
+    margin-left:450px;
+    margin-top:-290px;
+  }
+  .styled-table {
+ 
+    margin-left:450px;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+  .styled-table thead tr {
+      
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    width:100%;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.inline{
+    
+    display: inline-block;
+    
+    padding: 5px;
+    border: 1px solid blue;    
+
+
+}
+.parent{
+    height:600px;
+}

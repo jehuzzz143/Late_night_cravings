@@ -8,9 +8,10 @@
     
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/product.css">
+    
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/product.css">
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -34,46 +35,48 @@
             </span>
         </button>
         <div>
-        <table>
-            <tr>
-                <th>#</th>
-                <th>Product Name</th>
-                <th>Description</th>
-                <th>Product Type</th>
-                <th>Image</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-              <?php
-              include "../db_connection.php";
-              $view = "Select * from tbl_products";
-              $result = $conn->query($view);
-              while($row=$result->fetch_assoc()){
-                echo "<tr>";
-                echo "<td>".$row['ID']."</td>";
-                echo "<td>".$row['prod_name']."</td>";
-                echo "<td>".$row['prod_desc']."</td>";
-                echo "<td>".$row['prod_type']."</td>";
-                echo "<td><img height='50px' width='50px' src = 'prod_images/".$row['prod_image']."'</td>";
-                echo "<td style='display:none';>";
-                echo "<p>".$row['ID']."</p>";
-                echo "<p>".$row['prod_name']."</p>";
-                echo "<p>".$row['prod_desc']."</p>";
-                echo "<p>".$row['prod_type']."</p>";
-                echo "<p>".$row['prod_image']."</p>";
-                echo "</td>";
-                echo "<td>";
-                
-                echo '<button name = "subedit" type = "submitedit" value="'.$row['ID'].'" class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>';
-                echo '<button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>';
-                echo "<button></button>";
-                echo " </td>";
-                echo "</tr>";
-            }
-            ?>
-            
+          <center>
+          <table>
+              <tr>
+                  <th>#</th>
+                  <th>Product Name</th>
+                  <th>Description</th>
+                  <th>Product Type</th>
+                  <th>Image</th>
+                  <th>Action</th>
+              </tr>
+              <tr>
+                <?php
+                include "../db_connection.php";
+                $view = "Select * from tbl_products";
+                $result = $conn->query($view);
+                while($row=$result->fetch_assoc()){
+                  echo "<tr>";
+                  echo "<td>".$row['ID']."</td>";
+                  echo "<td>".$row['prod_name']."</td>";
+                  echo "<td class='description'>".$row['prod_desc']."</td>";
+                  echo "<td>".$row['prod_type']."</td>";
+                  echo "<td><img height='50px' width='50px' src = 'prod_images/".$row['prod_image']."'</td>";
+                  echo "<td style='display:none';>";
+                  echo "<p>".$row['ID']."</p>";
+                  echo "<p>".$row['prod_name']."</p>";
+                  echo "<p>".$row['prod_desc']."</p>";
+                  echo "<p>".$row['prod_type']."</p>";
+                  echo "<p>".$row['prod_image']."</p>";
+                  echo "</td>";
+                  echo "<td>";
+                  
+                  echo '<button name = "subedit" type = "submitedit" value="'.$row['ID'].'" class="button-update update-modal"><ion-icon name="build-sharp"></ion-icon></button>';
+                  echo '<button class="button-delete delete-modal"><ion-icon name="trash-sharp"></ion-icon></button>';
+                  echo "<button></button>";
+                  echo " </td>";
+                  echo "</tr>";
+              }
+              ?>
+              
             </table>
-        </div>
+            </center>
+         </div>
            
         
     </section>
@@ -88,18 +91,18 @@
     <div class="content">
       <!--PRODUCT INPUTS -->
     <form method = POST action = "performAddProd.php" enctype="multipart/form-data">
-    <label for="prodname">Product Name:</label>
+    <b for="prodname">Product Name:</b><br>
     <input type="text" id="prodname" name="prodname" required><br>
-    <label for="proddesc">Product Description:</label>
-    <input type="text" id="proddesc" name="proddesc" requiered><br>
-    <label for="prodtype">Product Type:</label>
+    <b for="proddesc">Product Description:</b><br>
+    <input type="text" id="proddesc" name="proddesc" requiered maxlength = "150"><br>
+    <b for="prodtype">Product Type:</b><br>
     <select id="prodtype" name="prodtype" required>
     <option value="breakfast">Breakfast</option>
     <option value="lunch">Lunch</option>
     <option value="merienda">Merienda</option>
     <option value="dinner">Dinner</option>
     </select><br>
-    <label for="file">Product Picture:</label>
+    <b for="file">Product Picture:</b><br>
     <input type="file" id="file" name="file">
 
       <div class="field">
@@ -134,24 +137,20 @@
       <div class="close"><ion-icon name="close-circle-outline"></ion-icon></div>
     </header>
     <div class="content">
-    <form method = POST action = "performDeleteProd.php">
+    <form method = POST action = "performDeleteProd.php" >
     <input type = "hidden" id = "prodidedit1" name = "prodidedit1">
-      <label for="prodnameedit">Product Name:</label>
-      <input type="text" id = "prodnameedit1" name = "prodnameedit1"  readonly><br>
-      <label for= "proddescedit">Product Description:</label>
-      <input type="text" id = "proddescedit1" name = "proddescedit1" readonly><br>
-      <label for= "prodtypeedit">Product Type:</label>
-      <select id= "prodtypeedit1" name = "prodtypeedit1" readonly>
-      <option disabled value="breakfast">Breakfast</option>
-      <option disabled value="lunch">Lunch</option>
-      <option disabled value="merienda">Merienda</option>
-      <option disabled value="dinner">Dinner</option>
+      <b for="prodnameedit">Product Name:</b><p type="text" id = "prodnameedit1"   ></p>
+      <b for= "proddescedit">Product Description:</b>
+      <p type="text" id = "proddescedit1" ></p>
+      <b for= "prodtypeedit">Product Type:</b>
+      <p  id= "prodtypeedit1" \></p>
+      
       </select>
-      <img src = "prod_images/CAPTURE.png" name = "prodimageedit1"></img>
+      <img class="preview-image" src = "prod_images/" id = "prodimageedit1">
       
       <div class="field">
         <button type = "submit" formmethod = "post" name = "deleteProd" class="button-delete">Delete </ion-icon></button>
-        <button class="button-cancelDelete button-cancel">Cancel</button>
+        <button type="button"class="button-cancelDelete button-cancel">Cancel</button>
       </div>
   </form>
     </div>
@@ -179,12 +178,13 @@
 
             console.log(data);
             // get the input element using Id then document.getElementBy("input").value=data[0];
-            
-            document.getElementById("prodnameedit1").value=data[1];
-            document.getElementById("proddescedit1").value=data[2];
-            document.getElementById("prodtypeedit1").value=data[3];
             document.getElementById("prodidedit1").value=data[0];
-            document.getElementById("prodimageedit1").value=data[4];
+            document.getElementById("prodnameedit1").innerHTML=data[1];
+            document.getElementById("proddescedit1").innerHTML=data[2];
+            document.getElementById("prodtypeedit1").innerHTML=data[3];
+            
+            
+            document.getElementById("prodimageedit1").src="prod_images/"+data[4];
         // get the input element using Id then document.getElementBy("input").value=data[0];
 
         }
@@ -231,18 +231,18 @@
     ?>
     <form method = POST action = "subEditProd.php">
       <input type = "hidden" id = "prodidedit" name = "prodidedit">
-      <label for="prodnameedit">Product Name:</label>
+      <b for="prodnameedit">Product Name:</b><br>
       <input type="text" id = "prodnameedit" name = "prodnameedit"  required><br>
-      <label for= "proddescedit">Product Description:</label>
-      <input type="text" id = "proddescedit" name = "proddescedit" required><br>
-      <label for= "prodtypeedit">Product Type:</label>
+      <b for= "proddescedit">Product Description:</b><br>
+      <input type="text" id = "proddescedit" name = "proddescedit" maxlength = "150"required><br>
+      <b for= "prodtypeedit">Product Type:</b><br>
       <select id= "prodtypeedit" name = "prodtypeedit" required>
       <option value="breakfast">Breakfast</option>
       <option value="lunch">Lunch</option>
       <option value="merienda">Merienda</option>
       <option value="dinner">Dinner</option>
       </select><br>
-      <img src = "prod_images/" id = "prodimageedit">
+      <img class="preview-image" src = "prod_images/" id = "prodimageedit">
       
   
         <div class="field">
@@ -279,6 +279,8 @@
             document.getElementById("prodnameedit").value=data[1];
             document.getElementById("proddescedit").value=data[2];
             document.getElementById("prodtypeedit").value=data[3];
+           
+            document.getElementById("prodidedit").value=data[0];
             document.getElementById("prodimageedit").src="prod_images/"+data[4];
 
             

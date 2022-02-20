@@ -23,7 +23,15 @@
           else 
           { 
             ?>
-             <li><a class="change-color update-modal">Profile</a></li>
+             <li class="dropdown">
+               <a class="change-color update-modal">
+                 Profile
+               </a>
+              <div class="dropdown-content">
+                <a href="profile.php">My Profile</a>
+                <a href="#">Log Out</a>
+              </div>
+            </li>
            <?php
         } 
         ?>
@@ -33,3 +41,4 @@
       </div>
     </div>
   </nav>
+

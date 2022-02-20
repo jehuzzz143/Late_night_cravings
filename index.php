@@ -77,7 +77,7 @@
     include ("products.php");
 ?>
 
-<div class="container" id="text-w" style="margin-top:60px;margin-bottom:60px;padding-right:0;padding-left:0;"  data-aos="fade-up">
+<div class="container" id="text-w" style="margin-top:60px;margin-bottom:60px;padding-right:0;padding-left:0;"  >
 
   <div class="title">Where are we located? </div>
 
@@ -94,7 +94,7 @@
 <div class="container is-fluid" id="parallax-2">
     <div class="container">
       <center>
-        <p class="text-slogan2" data-aos="fade-up">ORDER NOW</p>
+        <p class="text-slogan2">ORDER NOW</p>
     
         
       </center>

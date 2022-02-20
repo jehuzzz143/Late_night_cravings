@@ -21,18 +21,22 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endCo
 opacity: .7;
 }
 table{
- position: absolute;
+margin-top:60px;
  z-index: 2;
  left: 50%;
- top: 32%;
- transform: translate(-50%,-50%);
- width: 60%; 
+ /* //top: 32%;
+ //transform: translate(-50%,-50%); */
+width:100%;
+ height:50px !important;
  border-collapse: collapse;
  border-spacing: 0;
  box-shadow: 0 2px 15px rgba(64,64,64,.7);
  border-radius: 12px 12px 0 0;
- overflow: hidden;
+ overflow: scroll;
 
+}
+table .description{
+    max-width:600px;
 }
 td , th{
  padding: 15px 20px;
@@ -58,5 +62,39 @@ tr:nth-child(even){
 }
 
 
+.preview-image{
+    height: 200px;
+}
 
+input[type="text"]{
+  color:grey;
+  font-family: 'Poppins', sans-serif;
+  width: 42%;
+  padding: 10px 20px;
+  margin: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+select{
+    
+    color:grey;
+    font-family: 'Poppins', sans-serif;
+    width: 42%;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;   
+}
+input[type="file"]{
+    color:grey;
+    font-family: 'Poppins', sans-serif;
+    width: 42%;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;  
+}
 
