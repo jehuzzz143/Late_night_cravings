@@ -38,10 +38,10 @@
   /* table */
   .table-title{
     margin-left:450px;
-    margin-top:-290px;
+  
   }
   .styled-table {
- 
+
     margin-left:450px;
     border-collapse: collapse;
     font-size: 0.9em;
@@ -77,14 +77,14 @@
 }
 
 .inline{
-    
     display: inline-block;
-    
     padding: 5px;
     border: 1px solid blue;    
-
-
 }
 .parent{
     height:600px;
+
+    
+    
+ 
 }

@@ -68,7 +68,7 @@
 <!-- user card -->
 <div class="parent">
 <div class="card inline">
-  <img src="css/photos/usericon.png" alt="user" style="width:100%">
+  <img src="css/photos/usericon.png" alt="user" style="width:50%">
   <h1>John Doe</h1>
   <p class="title">+639212765842</p>
   <p>18 eustaquio Street Octagon village Dela Paz Pasig City</p>
@@ -77,10 +77,60 @@
   </div>
   <p><button>Update Information</button></p>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 
 <!-- table -->
+<p class="table-title">My Cart</p>
+<table class="styled-table inline">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Points</th>
+            <th>Name</th>
+            <th>Points</th>
+            <th>Name</th>
+            <th>Points</th>
+            <th>Name</th>
+            <th>Points</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr class="active-row">
+            <td>Melissa</td>
+            <td>5150</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <!-- and so on... -->
+    </tbody>
+</table>
 <p class="table-title">My Orders</p>
 <table class="styled-table inline">
     <thead>
