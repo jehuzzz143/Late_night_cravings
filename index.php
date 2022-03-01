@@ -69,13 +69,68 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero, nam assumenda, at culpa quos perspiciatis ratione ea modi! Natus sapiente a, explicabo sit quisquam eligendi esse provident eos enim doloremque blanditiis aut placeat veniam, libero nostrum quae. Ipsam, iste reprehenderit minima accusantium illo dolorem recusandae, ipsa autem quidem reiciendis a mollitia sit tenetur.</p>
         </div>
         <div id="menu" style="opacity:0; margin-top;-100px;">  </div>
-    </div>
+      </div>
   </div>
   <br><br>
 <!-- products -->
 <?php 
     include ("products.php");
 ?>
+
+
+<div class="container">
+  <center>
+    <div class="title" style=" padding:10px;">SPECIAL CATERING SERVICE </div>
+    
+  </center>
+  <div class="columns">
+    <div class="column">
+      <div class="container zoomInside">
+        <img class="image-gall zoom" src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Review Photos">
+        <p class="text-float">Birthdays</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container zoomInside">
+        <img class="image-gall zoom" src="https://images.unsplash.com/photo-1575613583747-6b51b5452301?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Review Photos">
+        <p class="text-float">Special Events</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="container zoomInside">
+        <img class="image-gall zoom" src="https://images.unsplash.com/photo-1613067532415-90df85362423?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Review Photos">
+        <p class="text-float">Wedding</p>
+      </div>
+    </div>
+   
+  </div>
+  <div class="columns" style=" padding:10px;">
+ 
+    <div class="column" style="background-color: gainsboro;">
+    <b>NOTES</b>
+      <ul style="list-style-type: circle; padding-left:15px;">
+        <li>
+          <p>For catering service please contact our number directly</p>
+        </li>
+        <li>
+          <p> customer must book our services 3 or 5 days ahead of time</p>
+        </li>
+        <li>
+          <p> Last minute bookings will automatically be declined</p>
+        </li>
+      </ul>
+    </div>
+    <div class="column" style="background-color:gainsboro; padding-top:33px;">
+      
+      <div> <b>READY THE FOLLOWING INFO</b> :  Venue/Place, Theme of the event and time.</div>
+      <div> <b>GLOBE</b> : 09279135383 and look for miss janica for the catering booking. </div>
+      <div> <b>25%</b> :  downpayment is required. </div>
+    </div>
+  </div>
+  
+
+
+</div>
 
 <div class="container" id="text-w" style="margin-top:60px;margin-bottom:60px;padding-right:0;padding-left:0;"  >
 
@@ -86,12 +141,13 @@
   width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>  
 </div>
 </div>
-<div class="container">
 
-</div>
+<!-- special service -->
+
+
 
 <!-- PARALLAX 2 -->
-<div class="container is-fluid" id="parallax-2">
+<!-- <div class="container is-fluid" id="parallax-2">
     <div class="container">
       <center>
         <p class="text-slogan2">ORDER NOW</p>
@@ -99,7 +155,7 @@
         
       </center>
     </div>
-  </div>
+  </div> -->
 <!-- END PARALLAX 2 -->
 
 <!-- FOOTER -->
