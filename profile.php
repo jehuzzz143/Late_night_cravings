@@ -40,7 +40,9 @@
           if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
           { // This only show for NOT logged in visitors
             ?>
-              <li><a href="#loginView" onClick="login()" class="change-color">Login</a></li>
+             <script>
+                    location.href = 'index.php';
+            </script>
             <?php
           }
           else 
@@ -52,7 +54,7 @@
                </a>
               <div class="dropdown-content">
                 <a href="profile.php">My Profile</a>
-                <a href="#">Log Out</a>
+                <a href="LogoutFunction.php">Log Out</a>
               </div>
             </li>
            <?php

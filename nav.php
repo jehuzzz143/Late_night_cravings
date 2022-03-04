@@ -29,7 +29,8 @@
                </a>
               <div class="dropdown-content">
                 <a href="profile.php">My Profile</a>
-                <a href="#">Log Out</a>
+                <a href="usercart.php">My Cart</a>
+                <a href="LogoutFunction.php">Log Out</a>
               </div>
             </li>
            <?php

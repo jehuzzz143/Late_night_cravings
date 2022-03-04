@@ -24,11 +24,9 @@ include 'db_connection.php';
                     location.href = 'admin/';
                 </script>
             <?php
-            CloseCon($conn);
+                
             }
-            else{
-                
-                
+            else{   
                 $_SESSION['ID'] = $row['user_ID'];
                 $_SESSION['Fullname'] = $row['user_Fullname'];
                 $_SESSION["loggedin"] = true;

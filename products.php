@@ -31,11 +31,18 @@
                       </div>
                       
                       <small class="product-description"><?php echo $proddesc ?></small>
+
                   </div>
                 </div> 
                 <?php  
             }
         ?>
+     
       
   </div>
+  <center>
+      <div class="about">
+        <div class="title"><a href = 'orderproducts.php'>SEE ALL PRODUCT </a></div>
+      </div>
+  </center>
 </div>
