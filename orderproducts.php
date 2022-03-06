@@ -51,7 +51,7 @@
                </a>
               <div class="dropdown-content">
                 <a href="profile.php">My Profile</a>
-                <a href="">My Cart</a>
+                <a href="usercart.php">My Cart</a>
                 <a href="LogoutFunction.php">Log Out</a>
               </div>
             </li>
@@ -72,7 +72,7 @@
   </div>
 </center>
 <div class="container" style="margin-bottom:20px;  ">
-   <form action="" method="POST">
+   
   <div class="columns is-mobile is-multiline">
     
 
@@ -81,7 +81,7 @@
               $view = "Select * from tbl_products";
               $result = $conn->query($view);
               while($row=$result->fetch_assoc()){
-                
+                $prodid = $row['ID'];
                 $prodname = $row['prod_name'];
                 $proddesc = $row['prod_desc'];
                 $prodtype = $row['prod_type'];
@@ -89,11 +89,11 @@
                 $prodimgpath = "admin/prod_images/".$prodimage
                 ?>
 
-                      <div class="column is-2 padding-gall" stlye="background-color:red;">
-                      <div class="container zoomInside">
-                      <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
-                      </div>
-                      <div>
+                  <div class="column is-2 padding-gall" stlye="background-color:red;">
+                        <div class="container zoomInside">
+                          <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+                        </div>
+                    <div>
 
                       <div class="columns">
                           <div class="column"><p class="product-name"> <?php echo $prodname ?> </p></div>
@@ -107,11 +107,9 @@
                       }
                       else 
                       { 
-                      ?>                     
-                      <input type="number" id="prod_quant" name="prod_quant" min="1" max="10" onchange="updatequant(this.value)">
-                      <input type="hidden" name="prod_quantity">
-                      <input name="addtocart" type='submit' value="<?php echo $row['ID']?>"></input>
-                    <?php }?>
+                      ?>
+                      <button><a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a></button>
+                      <?php }?>
                   </div>
                 </div> 
                 <?php  
@@ -119,7 +117,6 @@
         ?>
       
   </div>
-  </form>
 </div>
 
 
@@ -172,10 +169,6 @@
             ChangeText[i].style.color ="black";
         }
       }
-    }
-    function updatequant(ish){
-      
-      document.getElementById("prod_quant").value = ish;
     }
   </script>
 

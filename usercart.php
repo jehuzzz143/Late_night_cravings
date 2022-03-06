@@ -39,11 +39,7 @@
         // Check if the user is logged in
           if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
           { // This only show for NOT logged in visitors
-            ?>
-             <script>
-                    location.href = 'index.php#loginView';
-            </script>
-           <?php
+            header("refresh:0;url=index.php");
           }
           else 
           { 
@@ -82,6 +78,7 @@
             <th>Product Type</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Action</th>
            
         </tr>
     </thead>
@@ -99,6 +96,7 @@
             <td><?php echo $row['prod_type']?></td>
             <td>0</td>
             <td>0</td>
+            <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
         </tr>
         <?php }?>
     </tbody>
