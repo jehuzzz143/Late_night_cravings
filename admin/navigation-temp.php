@@ -55,9 +55,9 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="sales.php">
                             <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Analytics</span>
+                            <span class="text nav-text">Sales</span>
                         </a>
                     </li>
 

@@ -97,4 +97,14 @@ input[type="file"]{
     border-radius: 4px;
     box-sizing: border-box;  
 }
+input[type="month"]{
+    color:grey;
+    font-family: 'Poppins', sans-serif;
+    width: 42%;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 

@@ -66,60 +66,307 @@
   </nav>
 <!-- Navigation Menu -->
  <br><br><br><br>
-<center>
-  <div class="about">
-    <div class="title">OUR MENU </div>
-  </div>
-</center>
-<div class="container" style="margin-bottom:20px;  ">
-   
-  <div class="columns is-mobile is-multiline">
-    
+ <!-- breakfast -->
+ <?php 
+  include "db_connection.php";
+  $view = "Select * from tbl_products WHERE prod_type ='breakfast'";
+  $result = $conn->query($view);
+  $count = mysqli_num_rows($result);
+  if($count == 0){
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">No Breakfast Available </div>
+        </div>
+      </center>
+    <?php
+  }else{
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">BREAKFAST </div>
+        </div>
+      </center>
+    <?php
 
-      <?php
-              include "db_connection.php";
-              $view = "Select * from tbl_products";
-              $result = $conn->query($view);
-              while($row=$result->fetch_assoc()){
-                $prodid = $row['ID'];
-                $prodname = $row['prod_name'];
-                $proddesc = $row['prod_desc'];
-                $prodtype = $row['prod_type'];
-                $prodimage = $row['prod_image'];
-                $prodimgpath = "admin/prod_images/".$prodimage
-                ?>
-
-                  <div class="column is-2 padding-gall" stlye="background-color:red;">
-                        <div class="container zoomInside">
-                          <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
-                        </div>
-                    <div>
-
-                      <div class="columns">
-                          <div class="column"><p class="product-name"> <?php echo $prodname ?> </p></div>
-                      </div>
-                      <small class="product-description"><?php echo $proddesc ?></small>
-                      <br>
-                      <?php
-                      if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
-                      { // This only show for NOT logged in visitors
-                        
-                      }
-                      else 
-                      { 
-                      ?>
-                      <button><a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a></button>
-                      <?php }?>
-                  </div>
-                </div> 
-                <?php  
-            }
+  }
+?>
+<div class="container" style="position:relative; padding-bottom:30px;" >
+  <div class="columns is-mobile is-multiline is-primary" style="position:relative;">
+    <?php
+      if($count == 0){
         ?>
+          <center>
+            <p style="text-align:center;">No Lunch Available for now</p>
+          </center>
+        <?php
+      }else{
+
+        while($row=$result->fetch_assoc()){
+          $prodid = $row['ID'];
+          $prodname = $row['prod_name'];
+          $proddesc = $row['prod_desc'];
+          $prodtype = $row['prod_type'];
+          $prodimage = $row['prod_image'];
+          $prodimgpath = "admin/prod_images/".$prodimage
+          ?>
+            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+              <div class="container zoomInside" >
+                <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+              </div>
+                <p class="product-name"> <?php echo $prodname ?> </p>
+                <small class="product-description"><?php echo $proddesc ?></small><br>
+                <?php
+                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+                  // This only show for NOT logged in visitors
+                }
+                else{ 
+                  ?>
+                    <button style="position:absolute; bottom: 0; right:0;">
+                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
+                    </button>
+                  <?php 
+                }
+                  ?>
+              
+            </div> 
+          <?php  
+        }
+      }
+    ?>
+  </div>
+</div>
+<?php 
+  $view = "Select * from tbl_products WHERE prod_type ='lunch'";
+  $result = $conn->query($view);
+  $count = mysqli_num_rows($result);
+  if($count ==0){
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">No Lunch Available </div>
+        </div>
+      </center>
+    <?php
+  }else{
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">Lunch </div>
+        </div>
+      </center>
+    <?php
+
+  }
+?>
+<div class="container" style="position:relative; padding-bottom:30px;"  >
+  <div class="columns is-mobile is-multiline is-primary" style="position:relative;">
+    <?php
+      if($count == 0){
+        ?>
+          <div class="column " style="position:relative; padding-bottom:30px;">
+            <hr style="border-top: 1px dashed red;" />
+          </div>
+        <?php
+      }else{
+        while($row=$result->fetch_assoc()){
+          $prodid = $row['ID'];
+          $prodname = $row['prod_name'];
+          $proddesc = $row['prod_desc'];
+          $prodtype = $row['prod_type'];
+          $prodimage = $row['prod_image'];
+          $prodimgpath = "admin/prod_images/".$prodimage
+          ?>
+            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+              <div class="container zoomInside" >
+                <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+              </div>
+                <p class="product-name"> <?php echo $prodname ?> </p>
+                <small class="product-description"><?php echo $proddesc ?></small><br>
+                <?php
+                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+                  // This only show for NOT logged in visitors
+                }
+                else{ 
+                  ?>
+                    <button style="position:absolute; bottom: 0; right:0;">
+                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
+                    </button>
+                  <?php 
+                }
+                  ?>
+              
+            </div> 
+          <?php  
+        }
+
+      }
+      
+    ?>
+      
+  </div>
+</div>
+<!-- merienda -->
+<?php 
+  $view = "Select * from tbl_products WHERE prod_type ='merienda'";
+  $result = $conn->query($view);
+  $count = mysqli_num_rows($result);
+  if($count ==0){
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">No Merienda Available </div>
+        </div>
+      </center>
+    <?php
+  }else{
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">Merienda </div>
+        </div>
+      </center>
+    <?php
+
+  }
+?>
+
+<div class="container" style="position:relative; padding-bottom:30px;"  >
+  <div class="columns is-mobile is-multiline is-primary" style="position:relative;">
+    <?php
+      if($count == 0){
+        ?>
+          <div class="column " style="position:relative; padding-bottom:30px;">
+            <hr style="border-top: 1px dashed red;" />
+          </div>
+        <?php
+      }else{
+        while($row=$result->fetch_assoc()){
+          $prodid = $row['ID'];
+          $prodname = $row['prod_name'];
+          $proddesc = $row['prod_desc'];
+          $prodtype = $row['prod_type'];
+          $prodimage = $row['prod_image'];
+          $prodimgpath = "admin/prod_images/".$prodimage
+          ?>
+            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+              <div class="container zoomInside" >
+                <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+              </div>
+                <p class="product-name"> <?php echo $prodname ?> </p>
+                <small class="product-description"><?php echo $proddesc ?></small><br>
+                <?php
+                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+                  // This only show for NOT logged in visitors
+                }
+                else{ 
+                  ?>
+                    <button style="position:absolute; bottom: 0; right:0;">
+                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
+                    </button>
+                  <?php 
+                }
+                  ?>
+              
+            </div> 
+          <?php  
+        }
+
+      }
+      
+    ?>
+      
+  </div>
+</div>
+<!-- Dinner -->
+<?php 
+  $view = "Select * from tbl_products WHERE prod_type ='dinner'";
+  $result = $conn->query($view);
+  $count = mysqli_num_rows($result);
+  if($count == 0){
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">No Dinner Available </div>
+        </div>
+      </center>
+    <?php
+  }else{
+    ?>
+      <center>
+        <div class="about">
+          <div class="title">Dinner </div>
+        </div>
+      </center>
+    <?php
+
+  }
+?>
+
+<div class="container" style="position:relative; padding-bottom:30px;"  >
+  <div class="columns is-mobile is-multiline is-primary" style="position:relative;">
+    <?php
+      if($count == 0){
+        ?>
+          <div class="column " style="position:relative; padding-bottom:30px;">
+            <hr style="border-top: 1px dashed red;" />
+          </div>
+        <?php
+      }else{
+        while($row=$result->fetch_assoc()){
+          $prodid = $row['ID'];
+          $prodname = $row['prod_name'];
+          $proddesc = $row['prod_desc'];
+          $prodtype = $row['prod_type'];
+          $prodimage = $row['prod_image'];
+          $prodimgpath = "admin/prod_images/".$prodimage
+          ?>
+            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+              <div class="container zoomInside" >
+                <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+              </div>
+                <p class="product-name"> <?php echo $prodname ?> </p>
+                <small class="product-description"><?php echo $proddesc ?></small><br>
+                <?php
+                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+                  // This only show for NOT logged in visitors
+                }
+                else{ 
+                  ?>
+                    <button style="position:absolute; bottom: 0; right:0;">
+                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
+                    </button>
+                  <?php 
+                }
+                  ?>
+              
+            </div> 
+          <?php  
+        }
+
+      }
+      
+    ?>
       
   </div>
 </div>
 
 
+
+
+
+
+
+
+<?php 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
+{ // This only show for NOT logged in visitors
+  ?>  
+    <br><br><br>
+    <span style="color:grey"> Please login to allow ordering function </span>
+  <?php
+}
+?>
 <!-- special service -->
 
 

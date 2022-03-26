@@ -28,7 +28,7 @@ include "db_connection.php";
         header("refresh:0;url=orderproducts.php");
       }else
       {
-        echo ''.$conn->error();
+        echo ''.$conn->error;
       }
     }
   

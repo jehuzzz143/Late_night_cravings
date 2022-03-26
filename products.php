@@ -10,7 +10,7 @@
 
       <?php
               include "db_connection.php";
-              $view = "Select * from tbl_products";
+              $view = "Select * from tbl_products LIMIT 8";
               $result = $conn->query($view);
               while($row=$result->fetch_assoc()){
 
@@ -20,7 +20,7 @@
                 $prodimage = $row['prod_image'];
                 $prodimgpath = "admin/prod_images/".$prodimage
                 ?>
-                <div class="column is-2 padding-gall" stlye="background-color:red;">
+                <div class="column is-3 padding-gall" stlye="background-color:red;">
                   <div class="container zoomInside">
                     <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
                   </div>
@@ -42,7 +42,7 @@
   </div>
   <center>
       <div class="about">
-        <div class="title"><a href = 'orderproducts.php'>SEE ALL PRODUCT </a></div>
+        <div class="title"><a href = 'orderproducts.php'> >>> BUY <<< </a></div>
       </div>
   </center>
 </div>
