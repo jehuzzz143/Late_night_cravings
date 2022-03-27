@@ -36,6 +36,7 @@
                 <th>identifiant </th>
                 <th>date de naissance </th>
                 <th>salaire</th>
+                <th colspan="2">Action</th>
             
             </tr>
             <tr>
@@ -45,6 +46,8 @@
                 <td>1368</td>
                 <td>18 Nov 1962</td>
                 <td>5000$</td>
+                <td><button class="button-update "><ion-icon name="thumbs-up-outline"></ion-icon></button></td>
+                <td><button class="button-delete "><ion-icon name="thumbs-down-outline"></ion-icon></button></td>
             
             </tr>
             <tr>
@@ -54,6 +57,8 @@
                 <td>1368</td>
                 <td>18 Nov 1962</td>
                 <td>5000$</td>
+                <td><button class="button-update"><ion-icon name="thumbs-up-outline"></ion-icon></button></td>
+                <td><button class="button-delete"><ion-icon name="thumbs-down-outline"></ion-icon></button></td>
         
             </tr>
             

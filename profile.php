@@ -87,49 +87,33 @@
 <table class="styled-table inline">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Product Description</th>
+          <th>Product Type</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
            
         </tr>
     </thead>
     <tbody>
+        <?php
+            include "db_connection.php";
+            $view = "Select * FROM tbl_cart WHERE cust_id = '".$_SESSION['ID']."'";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
         <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
+            <td><img height='50px' width='50px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
+            <td><?php echo $row['prod_name']?></td>
+            <td><?php echo $row['prod_desc']?></td>
+            <td><?php echo $row['prod_type']?></td>
+            <td>0</td>
+            <td>0</td>
+            <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
         </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
+        <?php }?>
         <!-- and so on... -->
     </tbody>
 </table>
