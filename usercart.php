@@ -78,7 +78,7 @@
             <th>Product Type</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Action</th>
+            <th colspan=2>Action</th>
            
         </tr>
     </thead>
@@ -90,13 +90,16 @@
                 while($row=$result->fetch_assoc()){
         ?>
         <tr>
+          <form action="usercart.php?prodid=<?php echo $row['ID'] ?>" method="post">
             <td><img height='50px' width='50px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
             <td><?php echo $row['prod_name']?></td>
             <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
-            <td>0</td>
+            <td><input type="number" name="quantity" value= <?php echo $row['prod_quant']?>></td>
             <td>0</td>
             <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
+            <td><input type="submit" value="update" name="update">Update</input></td>
+          </form>
         </tr>
         <?php }?>
     </tbody>
@@ -104,7 +107,28 @@
 
 </div>
 <br><br><br>
+<?php
 
+if(isset($_POST['update']))
+  {
+  $cust_id=$_SESSION['ID'];
+  $prodid=$_GET['prodid'];
+  $prodquant=$_POST['quantity'];
+
+  $updatecart="UPDATE tbl_cart SET `prod_quant`='$prodquant' WHERE cust_id='$cust_id' AND ID='$prodid'";
+  $result = $conn->query($updatecart);
+
+    if($result==True){
+      exit;
+      header("Refresh:0");
+    }else
+    {
+      echo ''.$conn->error();
+    }
+    
+  }
+      
+?>
 
 
 

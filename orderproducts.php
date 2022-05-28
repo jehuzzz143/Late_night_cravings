@@ -108,28 +108,29 @@
           $proddesc = $row['prod_desc'];
           $prodtype = $row['prod_type'];
           $prodimage = $row['prod_image'];
+          #$prodimage = $row['prod_quant'];
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
-              <div class="container zoomInside" >
-                <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
-              </div>
-                <p class="product-name"> <?php echo $prodname ?> </p>
-                <small class="product-description"><?php echo $proddesc ?></small><br>
-                <?php
-                if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
-                  // This only show for NOT logged in visitors
-                }
-                else{ 
-                  ?>
-                    <button style="position:absolute; bottom: 0; right:0;">
-                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
-                    </button>
-                  <?php 
-                }
-                  ?>
-              
-            </div> 
+              <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
+                <div class="container zoomInside" >
+                  <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
+                </div>
+                  <p class="product-name"> <?php echo $prodname ?> </p>
+                  <small class="product-description"><?php echo $proddesc ?></small><br>
+                  <?php
+                  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+                    // This only show for NOT logged in visitors
+                  }
+                  else{ 
+                    ?>
+                      <input type="number" name="quantity" value=1 max=>
+                      <input type="submit" name="addtocart" value="Add to Cart">
+                    <?php 
+                  }
+                    ?>
+              </form>
+            </div>
           <?php  
         }
       }
@@ -386,6 +387,43 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 <!-- FOOTER -->
 <?php 
     include ("footer.php");
+?>
+<?php
+if(isset($_POST['addtocart']))
+  {
+    include "db_connection.php";
+
+    $cust_id=$_SESSION['ID'];
+    $prodid=$_GET['id'];
+    $quant=$_POST['quantity'];
+    $productduplisql = "Select * FROM tbl_cart WHERE prod_id ='$prodid' AND cust_id = '$cust_id'";
+    $dupliresult = $conn->query($productduplisql);
+    if($dupliresult -> num_rows > 0){
+      ?>  
+        <script>
+        alert("Order already added!");
+        </script>
+      <?php
+      header("refresh:0;url=orderproducts.php");
+    }else{
+    $insertcart="INSERT INTO `tbl_cart`(`prod_id`, `prod_name`, `prod_desc`, `prod_type`, `prod_image`,`prod_quant`,`cust_id`)
+          SELECT `ID`,`prod_name`,`prod_desc`,`prod_type`,`prod_image`,'$quant','$cust_id' FROM tbl_products WHERE ID = '$prodid'";
+    $result = $conn->query($insertcart);
+
+      if($result==True){
+      ?>  
+        <script>
+        alert("Sucessfuly Added Product<?php $quant?>");
+        </script>
+      <?php
+
+        header("refresh:0;url=orderproducts.php");
+      }else
+      {
+        echo ''.$conn->error;
+      }
+    }
+  }
 ?>
   
 
