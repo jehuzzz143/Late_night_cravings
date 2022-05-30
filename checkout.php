@@ -61,11 +61,8 @@
         <i class="fas fa-bars"></i>
       </div>
     </div>
-  </nav>
+</nav>
 <br><br><br><br><br><br><br><br>
-
-
-
 
 <!-- table -->
 <p class="table-title">My Cart</p>
@@ -74,74 +71,52 @@
         <tr>
             <th>Product Image</th>
             <th>Product Name</th>
-            <th>Product Description</th>
             <th>Product Type</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th colspan=2>Action</th>
+            <th>Total Price</th>
            
         </tr>
     </thead>
     <tbody>
         <?php
-                include "db_connection.php";
-                $view = "Select * FROM tbl_cart WHERE cust_id = '".$_SESSION['ID']."'";
-                $result = $conn->query($view);
-                $rowcount=$result->num_rows;
-                while($row=$result->fetch_assoc()){
+            include "db_connection.php";
+            $cust_id = $_GET['custid'];
+            $view = "Select * FROM tbl_cart WHERE cust_id = '".$cust_id."'";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
         ?>
         <tr>
           <form action="usercart.php?prodid=<?php echo $row['ID'] ?>" method="post">
             <td><img height='50px' width='50px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
             <td><?php echo $row['prod_name']?></td>
-            <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
-            <td><input type="number" name="quantity" value= <?php echo $row['prod_quant']?>></td>
+            <td><?php echo $row['prod_quant']?></td>
             <td>0</td>
-            <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
-            <td><input type="submit" value="update" name="update">Update</input></td>
+            <td>0</td>
+
           </form>
         </tr>
-        <?php }?>
+        <?php }}?>
     </tbody>
 </table>
-<?php 
-if($rowcount==0){
-}else{
-?>
-<button>
-    <a href="checkout.php?custid=<?php echo $_SESSION['ID']?>"> Checkout </a>
-</button>
-<?php } ?>
 </div>
 <br><br><br>
-<?php
-
-if(isset($_POST['update']))
-  {
-  $cust_id=$_SESSION['ID'];
-  $prodid=$_GET['prodid'];
-  $prodquant=$_POST['quantity'];
-
-  $updatecart="UPDATE tbl_cart SET `prod_quant`='$prodquant' WHERE cust_id='$cust_id' AND ID='$prodid'";
-  $result = $conn->query($updatecart);
-
-    if($result==True){
-      exit;
-      header("Refresh:0");
-    }else
-    {
-      echo ''.$conn->error();
-    }
-    
-  }
-      
-?>
-
-
-
-
-
+<div>
+    <?php
+        $subtotal = "Select SUM(prod_quant) as total FROM tbl_cart WHERE cust_id = '".$cust_id."'";
+        $result = $conn->query($subtotal);
+        $row = mysqli_fetch_array($result);
+        $shipping = 40;
+        $total_price = $row['total'] + $shipping;
+    ?>
+    <p>Subtotal Price <p> <?php echo $row['total']; ?>
+    <p>Shipping Fee     <p> <?php echo $shipping; ?>
+    <p>Total Order Price    <p> <?php echo $total_price; ?>
+    <button>
+        <a href="PlaceOrder.php?cust_id=<?php echo $_SESSION['ID']?>&subtot=<?php echo $row['total']?>&ship=<?php echo $shipping?>&totprice=<?php echo $total_price?>" > Place Order
+    </button>
+</div>
 
 <!-- DATA AOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -150,7 +125,6 @@ if(isset($_POST['update']))
     offset:200,
     duration:1000
     });
-
 
 </script>
 </body>
