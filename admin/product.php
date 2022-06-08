@@ -41,6 +41,7 @@
                   <th>#</th>
                   <th>Product Name</th>
                   <th>Description</th>
+                  <th>Price</th>
                   <th>Product Type</th>
                   <th>Image</th>
                   <th>Action</th>
@@ -55,13 +56,14 @@
                   echo "<td>".$row['ID']."</td>";
                   echo "<td>".$row['prod_name']."</td>";
                   echo "<td class='description'>".$row['prod_desc']."</td>";
+                  echo "<td>".$row['prod_price']."</td>";
                   echo "<td>".$row['prod_type']."</td>";
                   echo "<td><img height='50px' width='50px' src = 'prod_images/".$row['prod_image']."'</td>";
                   echo "<td style='display:none';>";
                   echo "<p>".$row['ID']."</p>";
                   echo "<p>".$row['prod_name']."</p>";
                   echo "<p>".$row['prod_desc']."</p>";
-                  echo "<p>".$row['prod_type']."</p>";
+                  echo "<p>".$row['prod_price']."</p>";
                   echo "<p>".$row['prod_image']."</p>";
                   echo "</td>";
                   echo "<td>";
@@ -95,6 +97,8 @@
     <input type="text" id="prodname" name="prodname" required><br>
     <b for="proddesc">Product Description:</b><br>
     <input type="text" id="proddesc" name="proddesc" requiered maxlength = "150"><br>
+    <b for="prodprice">Price:</b><br>
+    <input type="text" id="prodprice" name="prodprice" requiered maxlength = "10"><br>
     <b for="prodtype">Product Type:</b><br>
     <select id="prodtype" name="prodtype" required>
     <option value="breakfast">Breakfast</option>
@@ -226,6 +230,7 @@
         $prodname = $row['prod_name'];
         $proddesc = $row['prod_desc'];
         $prodtype = $row['prod_type'];
+        $prodprice = $row['prod_price'];
       }
     }
     ?>
@@ -235,6 +240,8 @@
       <input type="text" id = "prodnameedit" name = "prodnameedit"  required><br>
       <b for= "proddescedit">Product Description:</b><br>
       <input type="text" id = "proddescedit" name = "proddescedit" maxlength = "150"required><br>
+      <b for= "prodpriceedit">Price:</b><br>
+      <input type="text" id = "prodpriceedit" name = "prodpriceedit" maxlength = "10"required><br>
       <b for= "prodtypeedit">Product Type:</b><br>
       <select id= "prodtypeedit" name = "prodtypeedit" required>
       <option value="breakfast">Breakfast</option>
@@ -275,12 +282,12 @@
 
             console.log(data);
             // get the input element using Id then document.getElementBy("input").value=data[0];
-            
+            document.getElementById("prodidedit").value=data[0];
             document.getElementById("prodnameedit").value=data[1];
             document.getElementById("proddescedit").value=data[2];
-            document.getElementById("prodtypeedit").value=data[3];
-           
-            document.getElementById("prodidedit").value=data[0];
+            document.getElementById("prodpriceedit").value=data[3];
+            document.getElementById("prodtypeedit").value=data[5];
+            
             document.getElementById("prodimageedit").src="prod_images/"+data[4];
 
             

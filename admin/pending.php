@@ -30,37 +30,32 @@
         <div>
         <table>
             <tr>
-                <th>#</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>identifiant </th>
-                <th>date de naissance </th>
-                <th>salaire</th>
-                <th colspan="2">Action</th>
+                <th>ORDER ID</th>
+                <th>CUSTOMER ID</th>
+                <th>SUBTOTAL</th>
+                <th>SHIPPING FEE</th>
+                <th>TOTAL</th>
+                <th colspan="2">Status</th>
             
             </tr>
             <tr>
-                <td>1</td>
-                <td>Jean</td>
-                <td>leBon</td>
-                <td>1368</td>
-                <td>18 Nov 1962</td>
-                <td>5000$</td>
-                <td><button class="button-update "><ion-icon name="thumbs-up-outline"></ion-icon></button></td>
-                <td><button class="button-delete "><ion-icon name="thumbs-down-outline"></ion-icon></button></td>
-            
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Jean</td>
-                <td>leBon</td>
-                <td>1368</td>
-                <td>18 Nov 1962</td>
-                <td>5000$</td>
-                <td><button class="button-update"><ion-icon name="thumbs-up-outline"></ion-icon></button></td>
-                <td><button class="button-delete"><ion-icon name="thumbs-down-outline"></ion-icon></button></td>
-        
-            </tr>
+            <?php
+            include "../db_connection.php";
+            $view = "SELECT * FROM tbl_order WHERE status = 'Delivered' ORDER BY status";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+        <tr>
+        <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
+            <td><?php echo $row['Order_ID']?></td>
+            <td><?php echo $row['Sub_total']?></td>
+            <td><?php echo $row['Shipping_fee']?></td>
+            <td><?php echo $row['Total_Order_Price']?></td>
+            <td><?php echo $row['Cust_ID']?></td>
+            <td><?php echo $row['status']?></td>
+            </form>
+        </tr>
+        <?php }?>
             
             </table>
         </div>
@@ -93,3 +88,7 @@
 
 </body>
 </html>
+<?php
+
+
+?>

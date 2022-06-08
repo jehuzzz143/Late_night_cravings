@@ -85,7 +85,8 @@
     <tbody>
         <?php
                 include "db_connection.php";
-                $view = "Select * FROM tbl_cart WHERE cust_id = '".$_SESSION['ID']."'";
+                $view = "Select * FROM tbl_cart INNER JOIN tbl_products ON tbl_cart.prod_id = tbl_products.ID 
+                WHERE cust_id = '".$_SESSION['ID']."'";
                 $result = $conn->query($view);
                 $rowcount=$result->num_rows;
                 while($row=$result->fetch_assoc()){
@@ -97,13 +98,15 @@
             <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
             <td><input type="number" name="quantity" value= <?php echo $row['prod_quant']?>></td>
-            <td>0</td>
+            <td><?php echo $row['prod_price']?></td>
             <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
             <td><input type="submit" value="update" name="update">Update</input></td>
           </form>
         </tr>
+       
         <?php }?>
     </tbody>
+   
 </table>
 <?php 
 if($rowcount==0){
@@ -115,6 +118,7 @@ if($rowcount==0){
 <?php } ?>
 </div>
 <br><br><br>
+
 <?php
 
 if(isset($_POST['update']))
@@ -123,12 +127,13 @@ if(isset($_POST['update']))
   $prodid=$_GET['prodid'];
   $prodquant=$_POST['quantity'];
 
-  $updatecart="UPDATE tbl_cart SET `prod_quant`='$prodquant' WHERE cust_id='$cust_id' AND ID='$prodid'";
+  $updatecart="UPDATE tbl_cart SET `prod_quant` = '$prodquant' WHERE cust_id = '$cust_id' AND prod_id = '$prodid'";
   $result = $conn->query($updatecart);
 
     if($result==True){
-      exit;
+      
       header("Refresh:0");
+      exit;
     }else
     {
       echo ''.$conn->error();

@@ -10,6 +10,7 @@ include 'db_connection.php';
         $Userbday = $_POST['User-Birthdate'];
         $Userage = birthdayage($Userbday);
         $UserAddrs = $_POST['User-Address'];
+        $UserContact = $_POST['User-Contact'];
         $UserPassword = $_POST['User-Password'];
         $UserConfirmPassword = $_POST['User-Confirm_Password'];
         $Passwordcheck = ConfirmPassword($UserPassword,$UserConfirmPassword);
@@ -24,8 +25,8 @@ include 'db_connection.php';
         }
         
 
-        $InsertUserInfo = "INSERT INTO `tbl_users`(`user_ID`, `user_Email`, `user_Password`, `user_Fullname`, `user_Birthday`, `user_Age`, `user_Address`,`user_DateCreated`,`user_Status`) 
-        VALUES ('$UserId','$UserEmail','$UserPassword','$UserFullname','$Userbday','$Userage','$UserAddrs',NOW(),1)";
+        $InsertUserInfo = "INSERT INTO `tbl_users`(`user_ID`, `user_Email`, `user_Password`, `user_Fullname`, `user_Birthday`, `user_Age`, `user_Address`,`user_Contact`,`user_DateCreated`,`user_Status`) 
+        VALUES ('$UserId','$UserEmail','$UserPassword','$UserFullname','$Userbday','$Userage','$UserAddrs', '$UserContact',NOW(),1)";
         if($conn->query($InsertUserInfo)==TRUE){
             ?>
                 <script>

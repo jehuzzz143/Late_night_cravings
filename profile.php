@@ -70,14 +70,24 @@
 <!-- user card -->
 <div class="parent">
 <div class="card inline">
-  <img src="css/photos/usericon.png" alt="user" style="width:50%">
-  <h1>John Doe</h1>
-  <p class="title">+639212765842</p>
-  <p>18 eustaquio Street Octagon village Dela Paz Pasig City</p>
+<?php
+            include "db_connection.php";
+            $view = "Select * FROM tbl_users WHERE user_ID = '".$_SESSION['ID']."'";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+      
+       
+  <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
+  <h1><?php echo $row['user_Fullname']?></h1>
+  <p class="title"><?php echo $row['user_Contact']?></p>
+  <p><?php echo $row['user_Address']?></p>
   <div style="margin: 24px 0;"> 
-    <a href="#"><i class="fa fa-facebook"></i></a> 
+    <!-- <a href="#"><i class="fa fa-facebook"></i></a>  -->
   </div>
-  <p><button>Update Information</button></p>
+  
+  <p><button onclick="location.href='editProfile.php?userID=<?php echo $row['user_ID'];?>'">Update Information</button></p>
+  <?php }?>
 </div>
 
 
@@ -100,7 +110,9 @@
     <tbody>
         <?php
             include "db_connection.php";
-            $view = "Select * FROM tbl_cart WHERE cust_id = '".$_SESSION['ID']."'";
+            $view = "Select *,tbl_cart.prod_quant*tbl_products.prod_price as finprice FROM tbl_cart 
+            INNER JOIN tbl_products ON tbl_cart.prod_id = tbl_products.ID
+            WHERE cust_id = '".$_SESSION['ID']."'";
             $result = $conn->query($view);
             while($row=$result->fetch_assoc()){
         ?>
@@ -109,8 +121,8 @@
             <td><?php echo $row['prod_name']?></td>
             <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
-            <td>0</td>
-            <td>0</td>
+            <td><?php echo $row['prod_quant']?></td>
+            <td><?php echo $row['finprice']?></td>
             <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
         </tr>
         <?php }?>
@@ -143,127 +155,7 @@
             <td>Dom</td>
             <td>6000</td>
         </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        <tr class="active-row">
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-
-        </tr>
-        
-        <!-- and so on... -->
+       
     </tbody>
 </table>
 </div>

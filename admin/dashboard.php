@@ -50,24 +50,37 @@
             <div class="column" >
                 <table>
                     <tr>
-                        <th>#</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>identifiant </th>
-                        <th>date de naissance </th>
-                        <th>salaire</th>
+                        <th>ORDER ID</th>
+                        <th>SUBTOTAL</th>
+                        <th>SHIPPING FEE</th>
+                        <th>TOTAL</th>
+                        <th>CUSTOMER_ID</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
                     
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Jean</td>
-                        <td>leBon</td>
-                        <td>1368</td>
-                        <td>18 Nov 1962</td>
-                        <td>5000$</td>
-                    
-                    </tr>
-                    
+                    <?php
+            include "../db_connection.php";
+            $view = "SELECT * FROM tbl_order WHERE (STATUS = 'Accepted') OR (status = 'Declined') ORDER BY status";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+        <tr>
+        <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
+            <td><?php echo $row['Order_ID']?></td>
+            <td><?php echo $row['Sub_total']?></td>
+            <td><?php echo $row['Shipping_fee']?></td>
+            <td><?php echo $row['Total_Order_Price']?></td>
+            <td><?php echo $row['Cust_ID']?></td>
+            <td><?php echo $row['status']?></td>
+            <td colspan = 3>
+            <a href="acceptorder.php?orderid=<?php echo $row['Order_ID'];?>">Accept</a>
+            <br><a href="declineorder.php?orderid=<?php echo $row['Order_ID'];?>">Decline</a>
+            <br><a href="deliverorder.php?orderid=<?php echo $row['Order_ID'];?>">Deliver</a></td>
+            </form>
+        </tr>
+        <?php }?>
                 </table>
             </div>
             <!-- <div class="column is-3" style="z-idex:20">

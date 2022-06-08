@@ -23,6 +23,9 @@
 
     <label for="User-Address">Complete Address:</label>
     <input type="text" name="User-Address" required><br>
+
+    <label for="User-Contact">Contact Number:</label>
+    <input type="text" name="User-Contact" required><br>
    
     <label for="User-Password">Password:</label>
     <input type="password" name="User-Password" required><br>

@@ -6,11 +6,12 @@ if(isset($_POST['subAddProd'])){
 	$prodname = $_POST['prodname'];
 	$proddesc = $_POST['proddesc'];
 	$prodtype = $_POST['prodtype']; 
+	$prodprice = $_POST['prodprice'];
     $target = "prod_images/".basename($_FILES['file']['name']);
 	$image = $_FILES['file']['name'];
 
-$sqlAddProd = "INSERT INTO tbl_products(prod_name, prod_desc, prod_type, prod_image)
-VALUES('$prodname', '$proddesc', '$prodtype', '$image')";
+$sqlAddProd = "INSERT INTO tbl_products(prod_name, prod_desc, prod_type, prod_image, prod_price)
+VALUES('$prodname', '$proddesc', '$prodtype', '$image', $prodprice)";
 
 $result1 = $conn->query($sqlAddProd);
 

@@ -97,7 +97,7 @@
 
           </form>
         </tr>
-        <?php }}?>
+        <?php }?>
     </tbody>
 </table>
 </div>

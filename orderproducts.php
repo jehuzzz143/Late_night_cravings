@@ -108,7 +108,7 @@
           $proddesc = $row['prod_desc'];
           $prodtype = $row['prod_type'];
           $prodimage = $row['prod_image'];
-          #$prodimage = $row['prod_quant'];
+          $prodprice = $row['prod_price'];
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
@@ -118,6 +118,7 @@
                 </div>
                   <p class="product-name"> <?php echo $prodname ?> </p>
                   <small class="product-description"><?php echo $proddesc ?></small><br>
+                  <?php echo "PHP ".$prodprice ?>
                   <?php
                   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                     // This only show for NOT logged in visitors
@@ -246,6 +247,7 @@
           $prodid = $row['ID'];
           $prodname = $row['prod_name'];
           $proddesc = $row['prod_desc'];
+          $prodprice = $row['prod_price'];
           $prodtype = $row['prod_type'];
           $prodimage = $row['prod_image'];
           $prodimgpath = "admin/prod_images/".$prodimage
@@ -256,6 +258,7 @@
               </div>
                 <p class="product-name"> <?php echo $prodname ?> </p>
                 <small class="product-description"><?php echo $proddesc ?></small><br>
+                <?php echo "PHP ".$prodprice ?>
                 <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                   // This only show for NOT logged in visitors
