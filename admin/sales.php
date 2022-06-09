@@ -31,19 +31,19 @@
         <center>
             <div class="container">
                 <div class="columns">
-                    <form>
+                <form method="post" action="sales.php">
                         <div class="column ">
-                            <p class="">Starting Month</p>
-                            <input type="month"  name=""  value="" required>
+                            <p class="">Starting</p>
+                            <input type="date"  name="start"  value="" required>
                             
                         </div>
                         <div class="column ">
-                            <p class="">Ending Month</p>
-                            <input type="month"  name=""  value="" required>
+                            <p class="">Ending</p>
+                            <input type="date"  name="end"  value="" required>
                         
                         </div>
                         <div class="column ">
-                            <button type="submit" class="button_add"><span class="button__text">Generate Sale</span>
+                            <button type="submit" name="submit" class="button_add"><span class="button__text">Generate Sale</span>
                                 <span class="button__icon">
                                     <ion-icon name="disc-outline"></ion-icon>
                                 </span>
@@ -57,35 +57,68 @@
 
 
         <div >
+            
             <table style="margin-left:30px;">
                 <tr>
-                    <th>#</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>identifiant </th>
-                    <th>date de naissance </th>
-                    <th>salaire</th>
-                
+                    <th>ORDER ID</th>
+                    <th>SUB TOTAL</th>
+                    <th>SHIPPING FEE</th>
+                    <th>TOTAL </th>
+                    <th>CUSTOMER ID</th>
+                    <th>DATE DELIVERED</th>
+                    
+                    <tr>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Jean</td>
-                    <td>leBon</td>
-                    <td>1368</td>
-                    <td>18 Nov 1962</td>
-                    <td>5000$</td>
-                
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Jean</td>
-                    <td>leBon</td>
-                    <td>1368</td>
-                    <td>18 Nov 1962</td>
-                    <td>5000$</td>
+                <!-- <?php
+           include "../db_connection.php";
+
+            $view = "SELECT * FROM tbl_order WHERE status = 'Delivered'";
+      
+
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+        <tr>
+            <td><?php echo $row['Order_ID']?></td>
+            <td><?php echo $row['Sub_total']?></td>
+            <td><?php echo $row['Shipping_fee']?></td>
+            <td><?php echo $row['Total_Order_Price']?></td>
+            <td><?php echo $row['Cust_ID']?></td>
+            <td><?php echo $row['created_At']?></td>
             
-                </tr>
+        </tr>
+        <?php } ?> -->
+        <?php
+include "../db_connection.php";
+        if (isset($_POST['submit'])){
             
+            
+            $start = $_POST['start']; 
+            $end = $_POST['end'];
+            
+            if($start != NULL && $end != NULL){
+                $view = "SELECT * FROM tbl_order WHERE (created_At >= '$start' AND created_At <= '$end') AND status = 'Delivered'";
+            }else{
+                $view = "SELECT * FROM tbl_order status = 'Delivered'";
+            }
+
+            
+           
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+        <tr>
+            <td><?php echo $row['Order_ID']?></td>
+            <td><?php echo $row['Sub_total']?></td>
+            <td><?php echo $row['Shipping_fee']?></td>
+            <td><?php echo $row['Total_Order_Price']?></td>
+            <td><?php echo $row['Cust_ID']?></td>
+            <td><?php echo $row['created_At']?></td>
+            
+        </tr>
+        
+
+            <?php  } ?> <?php } ?>
             </table>
         </div>
     </section>
