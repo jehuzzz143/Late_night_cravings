@@ -113,13 +113,13 @@
             <td><?php echo $row['prod_name']?></td>
             <td><?php echo $row['prod_type']?></td>
             <td><?php echo $row['prod_quant']?></td>
-            <td>0</td>
-            <td>0</td>
+            <td><?php echo $row['prod_price']?></td>
+            <td><?php echo $row['prod_price']*$row['prod_quant'];?></td>
 
           </form>
         </tr>
         <?php }
-            $subtotal = "Select SUM(prod_quant) as total FROM tbl_cart WHERE cust_id = '".$cust_id."'";
+            $subtotal = "Select SUM(prod_price*prod_quant) as total FROM tbl_cart WHERE cust_id = '".$cust_id."'";
             $result = $conn->query($subtotal);
             $row = mysqli_fetch_array($result);
             $shipping = 40;

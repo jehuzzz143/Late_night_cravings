@@ -96,7 +96,7 @@
             <th style="width:200px">Product Description</th>
             <th style="width:200px">Product Type</th>
             <th style="width:200px">Quantity</th>
-            <th style="width:200px">Price</th>
+            <th style="width:200px">Total Price</th>
             <th colspan=2 style="text-align:center;">Action</th>
            
         </tr>
@@ -117,7 +117,7 @@
             <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
             <td><input type="number" name="quantity" max="10" min="1" value= <?php echo $row['prod_quant']?>></td>
-            <td><?php echo $row['prod_price']?></td>
+            <td><?php echo $row['prod_price']*$row['prod_quant'];?></td>
             <td><button style="background-color:; padding:0;"><a class="button-delete"  href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></button></td>
             <td><input class="button-update" type="submit" value="update" name="update"></input></td>
           </form>
