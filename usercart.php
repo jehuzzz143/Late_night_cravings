@@ -65,20 +65,39 @@
 <br><br><br><br><br><br><br><br>
 
 
-
+<div class="card inline" style="padding:3%;">
+<?php
+            include "db_connection.php";
+            $view = "Select * FROM tbl_users WHERE user_ID = '".$_SESSION['ID']."'";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+      
+       
+  <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
+  <p style="font-size:30px; white-space:nowrap;"><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
+  <p class="title"><?php echo $row['user_Contact']?></p>
+  <p class="title"><?php echo $row['user_Address']?></p>
+  <div style="margin: 24px 0;"> 
+    <!-- <a href="#"><i class="fa fa-facebook"></i></a>  -->
+  </div>
+  
+  <p><button onclick="location.href='editProfile.php?userID=<?php echo $row['user_ID'];?>'">Update Information</button></p>
+  <?php }?>
+</div>
 
 <!-- table -->
 <p class="table-title">My Cart</p>
-<table class="styled-table inline">
+<table class="styled-table ">
     <thead>
         <tr>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Product Description</th>
-            <th>Product Type</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th colspan=2>Action</th>
+            <th style="width:200px">Product Image</th>
+            <th style="width:200px">Product Name</th>
+            <th style="width:200px">Product Description</th>
+            <th style="width:200px">Product Type</th>
+            <th style="width:200px">Quantity</th>
+            <th style="width:200px">Price</th>
+            <th colspan=2 style="text-align:center;">Action</th>
            
         </tr>
     </thead>
@@ -97,25 +116,35 @@
             <td><?php echo $row['prod_name']?></td>
             <td><?php echo $row['prod_desc']?></td>
             <td><?php echo $row['prod_type']?></td>
-            <td><input type="number" name="quantity" value= <?php echo $row['prod_quant']?>></td>
+            <td><input type="number" name="quantity" max="10" min="1" value= <?php echo $row['prod_quant']?>></td>
             <td><?php echo $row['prod_price']?></td>
-            <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
-            <td><input type="submit" value="update" name="update">Update</input></td>
+            <td><button style="background-color:; padding:0;"><a class="button-delete"  href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></button></td>
+            <td><input class="button-update" type="submit" value="update" name="update"></input></td>
           </form>
         </tr>
        
         <?php }?>
+
+        <tr>
+          <td colspan="8">
+          <?php 
+            if($rowcount==0){
+            }else{
+            ?>
+             <a href="checkout.php?custid=<?php echo $_SESSION['ID']?>">
+            <button class="button_add">
+              CHECKOUT
+            </button>
+            </a>
+            <?php } 
+          ?>
+
+          </td>
+        </tr>
     </tbody>
    
 </table>
-<?php 
-if($rowcount==0){
-}else{
-?>
-<button>
-    <a href="checkout.php?custid=<?php echo $_SESSION['ID']?>"> Checkout </a>
-</button>
-<?php } ?>
+
 </div>
 <br><br><br>
 

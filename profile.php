@@ -53,7 +53,7 @@
                  Profile
                </a>
               <div class="dropdown-content">
-                <a href="profile.php">My Profile</a>
+                <a href="usercart.php">My Cart</a>
                 <a href="LogoutFunction.php">Log Out</a>
               </div>
             </li>
@@ -68,8 +68,8 @@
   </nav>
 <br><br><br><br><br><br><br><br>
 <!-- user card -->
-<div class="parent">
-<div class="card inline">
+<div class="parent" style="">
+<div class="card inline" style="padding:3%;">
 <?php
             include "db_connection.php";
             $view = "Select * FROM tbl_users WHERE user_ID = '".$_SESSION['ID']."'";
@@ -79,9 +79,9 @@
       
        
   <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
-  <h1><?php echo $row['user_Fullname']?></h1>
+  <p style="font-size:30px; white-space:nowrap;" ><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
   <p class="title"><?php echo $row['user_Contact']?></p>
-  <p><?php echo $row['user_Address']?></p>
+  <p class="title"><?php echo $row['user_Address']?></p>
   <div style="margin: 24px 0;"> 
     <!-- <a href="#"><i class="fa fa-facebook"></i></a>  -->
   </div>
@@ -92,59 +92,173 @@
 
 
 
-<!-- table -->
-<p class="table-title">My Cart</p>
-<table class="styled-table inline">
-    <thead>
+<!-- table-->
+
+<p class="table-title"> My Orders </p>
+<table class="styled-table ">
+    <thead  style="top:0px; position:sticky;"  >
         <tr>
-          <th>Product Image</th>
-          <th>Product Name</th>
-          <th>Product Description</th>
-          <th>Product Type</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Action</th>
-           
+            <th style="width:200px">Name</th>
+            <th style="width:200px">Points</th>
+            <th style="width:200px">Name</th>
+            <th style="width:200px">Points</th>
+            <th style="width:200px">Name</th>
+            <th style="width:200px">Points</th>
+            <th style="width:200px">Name</th>
+            <th style="width:200px">Points</th>
         </tr>
     </thead>
     <tbody>
-        <?php
-            include "db_connection.php";
-            $view = "Select *,tbl_cart.prod_quant*tbl_products.prod_price as finprice FROM tbl_cart 
-            INNER JOIN tbl_products ON tbl_cart.prod_id = tbl_products.ID
-            WHERE cust_id = '".$_SESSION['ID']."'";
-            $result = $conn->query($view);
-            while($row=$result->fetch_assoc()){
-        ?>
         <tr>
-            <td><img height='50px' width='50px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
-            <td><?php echo $row['prod_name']?></td>
-            <td><?php echo $row['prod_desc']?></td>
-            <td><?php echo $row['prod_type']?></td>
-            <td><?php echo $row['prod_quant']?></td>
-            <td><?php echo $row['finprice']?></td>
-            <td><a href="removecartfunction.php?prodid=<?php echo $row['prod_id'];?>">Remove</a></td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
         </tr>
-        <?php }?>
-        <!-- and so on... -->
-    </tbody>
-</table>
-<p class="table-title">My Orders</p>
-<table class="styled-table inline">
-    <thead>
         <tr>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
-            <th>Name</th>
-            <th>Points</th>
-           
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
         </tr>
-    </thead>
-    <tbody>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+            <td>Dom</td>
+            <td>6000</td>
+        </tr>
         <tr>
             <td>Dom</td>
             <td>6000</td>

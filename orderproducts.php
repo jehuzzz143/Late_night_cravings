@@ -20,6 +20,26 @@
     <!-- icons -->
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </head>
+<style>
+.btn-add{
+  display: flex;
+  text-align:center;
+  padding: 15px;
+  background: #009578;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color:white;
+}
+.btn-add:hover {
+    background: #008168;
+  }
+</style>
 <body>
 <!-- Navigation Menu -->
 <nav class="navbar" >
@@ -111,7 +131,7 @@
           $prodprice = $row['prod_price'];
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
-            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+            <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px; padding-top:10px; margin-left:10px;">
               <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
                 <div class="container zoomInside" >
                   <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
@@ -125,8 +145,12 @@
                   }
                   else{ 
                     ?>
-                      <input type="number" name="quantity" value=1 max=>
-                      <input type="submit" name="addtocart" value="Add to Cart">
+                      <div class="container" style="text-align:center;">
+                        <center>
+                          <input type="number" name="quantity" value=1 max=>
+                          <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
+                        </center>
+                      </div>
                     <?php 
                   }
                     ?>
@@ -180,6 +204,7 @@
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+            <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
               <div class="container zoomInside" >
                 <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
               </div>
@@ -191,13 +216,17 @@
                 }
                 else{ 
                   ?>
-                    <button style="position:absolute; bottom: 0; right:0;">
-                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
-                    </button>
+                    
+                    <div class="container" style="text-align:center;">
+                        <center>
+                          <input type="number" name="quantity" value=1 max=>
+                          <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
+                        </center>
+                      </div>
                   <?php 
                 }
                   ?>
-              
+              </form>
             </div> 
           <?php  
         }
@@ -253,6 +282,7 @@
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+            <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
               <div class="container zoomInside" >
                 <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
               </div>
@@ -265,13 +295,16 @@
                 }
                 else{ 
                   ?>
-                    <button style="position:absolute; bottom: 0; right:0;">
-                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
-                    </button>
+                    <div class="container" style="text-align:center;">
+                        <center>
+                          <input type="number" name="quantity" value=1 max=>
+                          <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
+                        </center>
+                      </div>
                   <?php 
                 }
                   ?>
-              
+            </form>
             </div> 
           <?php  
         }
@@ -326,6 +359,7 @@
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px;">
+            <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
               <div class="container zoomInside" >
                 <img class="image-gall zoom" src="<?php echo $prodimgpath ?>" alt="Review Photos">
               </div>
@@ -337,12 +371,16 @@
                 }
                 else{ 
                   ?>
-                    <button style="position:absolute; bottom: 0; right:0;">
-                      <a href="addtocartfunction.php?action=add&prodid=<?php echo $prodid;?>">Add to cart</a>
-                    </button>
+                    <div class="container" style="text-align:center;">
+                        <center>
+                          <input type="number" name="quantity" value=1 max=>
+                          <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
+                        </center>
+                      </div>
                   <?php 
                 }
                   ?>
+            </form>
               
             </div> 
           <?php  
@@ -357,11 +395,6 @@
 
 
 
-
-
-
-
-
 <?php 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
 { // This only show for NOT logged in visitors
@@ -371,23 +404,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
   <?php
 }
 ?>
-<!-- special service -->
 
-
-
-<!-- PARALLAX 2 -->
-<!-- <div class="container is-fluid" id="parallax-2">
-    <div class="container">
-      <center>
-        <p class="text-slogan2">ORDER NOW</p>
-    
-        
-      </center>
-    </div>
-  </div> -->
-<!-- END PARALLAX 2 -->
-
-<!-- FOOTER -->
 <?php 
     include ("footer.php");
 ?>

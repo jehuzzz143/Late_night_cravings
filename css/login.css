@@ -36,6 +36,17 @@ label{
   box-sizing: border-box;
 
 }
+.container input[type="number"]{
+  color:grey;
+  font-family: 'Poppins', sans-serif;
+  text-align:center;
+  width: 55%;
+  padding: 10px 20px;
+  margin: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 @keyframes fadeIn {
     0% {opacity:0;}
@@ -67,5 +78,18 @@ label{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
+.button-update{
+    color: white;
+    padding: 5px 18px;
+    background:#69B66A;
+    font-size: 25px;
+    font-family: sans-serif;
+    transition:.3s;
+    border:1px;
+    border-radius:5px;
+  }
+  .button-update:hover{
+    background:  #499C4A;
+  }
   
  

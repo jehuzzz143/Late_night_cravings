@@ -64,17 +64,38 @@
 </nav>
 <br><br><br><br><br><br><br><br>
 
-<!-- table -->
-<p class="table-title">My Cart</p>
-<table class="styled-table inline">
-    <thead>
-        <tr>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Product Type</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total Price</th>
+<div class="card inline" style="padding:3%;">
+<?php
+            include "db_connection.php";
+            $view = "Select * FROM tbl_users WHERE user_ID = '".$_SESSION['ID']."'";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+        ?>
+      
+       
+  <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
+  <p style="font-size:30px; white-space:nowrap;"><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
+  <p class="title"><?php echo $row['user_Contact']?></p>
+  <p class="title"><?php echo $row['user_Address']?></p>
+  <div style="margin: 24px 0;"> 
+    <!-- <a href="#"><i class="fa fa-facebook"></i></a>  -->
+  </div>
+  
+ 
+  <?php }?>
+</div>
+
+<!-- table style="width:900px !important;" -->
+<p class="table-title" >Checkout</p>
+<table class="styled-table" >
+    <thead style="width:100%;">
+        <tr style="text-align:center;width:100%;">
+            <th style="width:200px">Product Image</th>
+            <th style="width:200px">Product Name</th>
+            <th style="width:200px">Product Type</th>
+            <th style="width:200px">Quantity</th>
+            <th style="width:200px">Price</th>
+            <th style="width:200px">Total Price</th>
            
         </tr>
     </thead>
@@ -88,7 +109,7 @@
         ?>
         <tr>
           <form action="usercart.php?prodid=<?php echo $row['ID'] ?>" method="post">
-            <td><img height='50px' width='50px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
+            <td><img  width='80px' src = 'admin/prod_images/<?php echo $row['prod_image'];?>'></td>
             <td><?php echo $row['prod_name']?></td>
             <td><?php echo $row['prod_type']?></td>
             <td><?php echo $row['prod_quant']?></td>
@@ -97,26 +118,47 @@
 
           </form>
         </tr>
-        <?php }?>
+        <?php }
+            $subtotal = "Select SUM(prod_quant) as total FROM tbl_cart WHERE cust_id = '".$cust_id."'";
+            $result = $conn->query($subtotal);
+            $row = mysqli_fetch_array($result);
+            $shipping = 40;
+            $total_price = $row['total'] + $shipping;
+        ?>
+        <tr style="background-color:#E7FFE0; border:none;">
+          <td colspan="4">--------------------------------------------------------------------------</td>
+        
+          <td style="border-left: dotted 1px #f00; border-top: dotted 1px #f00; text-align:right;"><b>Subtotal Price:</b></td>
+          <td style="border-right: dotted 1px #f00; border-top: dotted 1px #f00;"><?php echo $row['total']; ?></td>
+        </tr>
+        <tr style="background-color:#E7FFE0; border:none;"> 
+        <td colspan="4"></td>
+          <td style="border-left: dotted 1px #f00;text-align:right;"> <b>Shipping Fee:</b></td>
+          <td style="border-right: dotted 1px #f00;"><?php echo $shipping; ?></td>
+        </tr>
+        <tr style="background-color:#E7FFE0; border:none;">
+        <td colspan="4"></td>
+          <td style="border-left: dotted 1px #f00; border-bottom: dotted 1px #f00;text-align:right; white-space: nowrap;"><b>Total Order Price:</b></td>
+          <td style="border-right: dotted 1px #f00; border-bottom: dotted 1px #f00;"><?php echo $total_price; ?></td>
+        </tr>
+        <tr style="background-color:#E7FFE0; border:none;">
+          <td colspan="6">
+          <a href="PlaceOrder.php?cust_id=<?php echo $_SESSION['ID']?>&subtot=<?php echo $row['total']?>&ship=<?php echo $shipping?>&totprice=<?php echo $total_price?>" >
+            <button class="button_add">
+                 Place Order 
+            </button>
+            </a>
+          </td>
+
+        </tr>
+        
+        
     </tbody>
 </table>
 </div>
+
 <br><br><br>
-<div>
-    <?php
-        $subtotal = "Select SUM(prod_quant) as total FROM tbl_cart WHERE cust_id = '".$cust_id."'";
-        $result = $conn->query($subtotal);
-        $row = mysqli_fetch_array($result);
-        $shipping = 40;
-        $total_price = $row['total'] + $shipping;
-    ?>
-    <p>Subtotal Price <p> <?php echo $row['total']; ?>
-    <p>Shipping Fee     <p> <?php echo $shipping; ?>
-    <p>Total Order Price    <p> <?php echo $total_price; ?>
-    <button>
-        <a href="PlaceOrder.php?cust_id=<?php echo $_SESSION['ID']?>&subtot=<?php echo $row['total']?>&ship=<?php echo $shipping?>&totprice=<?php echo $total_price?>" > Place Order
-    </button>
-</div>
+
 
 <!-- DATA AOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

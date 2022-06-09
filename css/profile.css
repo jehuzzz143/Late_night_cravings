@@ -38,30 +38,55 @@
   /* table */
   .table-title{
     margin-left:450px;
+    font-size:40px;
+    font-weight:bold;
   
   }
   .styled-table {
-    
+    overflow-y: scroll;
     margin-left:450px;
     border-collapse: collapse;
     font-size: 0.9em;
     font-family: sans-serif;
     width: 1000px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    display: block; height: 490px; 
+    
 }
   .styled-table thead tr {
-    position:relative;
+ 
     background-color: #009879;
-    color: #ffffff;
+    color:white;
     text-align: left;
-    width:100%;
+    
+
+}
+
+tbody,thead{
+ 
+  flex-direction: column;
+}
+.styled-table thead tr th{
+
+  color:white;
+  white-space:nowrap;
+  
+
 }
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
+    
+    
+}
+.styled-table tbody td{
+  
 }
 .styled-table tbody tr {
+  
     border-bottom: 1px solid #dddddd;
+    text-align: center;
+    
 }
 
 .styled-table tbody tr:nth-of-type(even) {
@@ -74,6 +99,7 @@
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+    
 }
 
 .inline{
@@ -82,9 +108,57 @@
     border: 1px solid blue;    
 }
 .parent{
-    height:600px;
-
-    
-    
  
+}
+
+input[type="number"]{
+  width:50px;
+  text-align: center; 
+}
+
+.button-update{
+  color: white;
+  padding: 5px 18px;
+  background:#69B66A;
+  font-size: 15px;
+  font-family: sans-serif;
+  transition:.3s;
+  border:1px;
+}
+.button-update:hover{
+  background:  #499C4A;
+}
+
+.button-delete{
+
+  color: white;
+  padding: 5px 10px;
+  background:#B66969;
+  font-size: 15px;
+  font-family: sans-serif;
+
+  transition:.3s;
+}
+.button-delete:hover{
+  background: #8E5252;
+}
+
+.button_add {
+  color:white !important;
+  height: 50px;
+  padding: 0;
+  background: #009578;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family:  sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align:center;
+  width:300px;
+}
+
+.button_add:hover {
+  background: #008168;
 }
