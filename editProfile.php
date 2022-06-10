@@ -28,7 +28,7 @@
  
   <div class="container" style="width:400px; margin-top:100px !important; padding:2%; background-color:#ECFFF0; box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;"> 
   <p class="login-close" style="margin-top:-40px;" onclick="location.href='profile.php'"><ion-icon name="close-outline"></ion-icon></p>
-  <form method = POST action = "performEditUser.php?orderid=<?php echo $orderid ?>">
+  <form method = "POST" >
     <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
     <h1 style="text-align:left;">Name:</h1>
     <input type = "hidden" id = "userid" name = "userid" value = "<?php echo $row['user_ID']?>" >
@@ -59,4 +59,46 @@
 
 </body>
 </html>
+<?php
+include "db_connection.php";
+if(isset($_POST['subEditUser']))
+{
+    $userid=$_POST['userid'];
+    $name = $_POST['nameedit'];
+    $contact = $_POST['contactedit'];
+    $address = $_POST['addressedit'];
+    $email = $_POST['emailedit'];
+    $password = $_POST['passedit'];
 
+    $edit = "UPDATE tbl_users SET user_Email = '$email', user_Contact = '$contact', user_Password = '$password', user_Fullname = '$name', user_Address = '$address' WHERE user_ID = '$userid'";
+
+
+
+ ?>
+
+     <?php
+     
+ if($conn->query($edit) === TRUE){
+ 
+     ?>
+     <script>
+      alert("1");
+     alert("Sucessfuly Edited Profile");
+     </script>
+     <?php
+     
+     header("refresh:0;url=profile.php");
+     }else{
+         ?>
+             <script>
+              alert("2");
+        alert(<?php echo ''.$conn->error; ?>);
+        </script>
+         <?php
+
+     }
+
+
+
+    }
+    ?>

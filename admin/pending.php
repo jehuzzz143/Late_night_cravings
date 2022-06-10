@@ -43,6 +43,14 @@
             include "../db_connection.php";
             $view = "SELECT * FROM tbl_order WHERE status = 'Delivered' ORDER BY status";
             $result = $conn->query($view);
+            $rowcount=$result->num_rows;
+            if($rowcount==0){
+                ?>
+                <tr>
+                  <td colspan=7 style="text-align:center;width:100%;"> No Ongoing Orders</td>
+                </tr>
+                <?php
+              }else{
             while($row=$result->fetch_assoc()){
         ?>
         <tr>
@@ -55,7 +63,7 @@
             <td><?php echo $row['status']?></td>
             </form>
         </tr>
-        <?php }?>
+        <?php }}?>
             
             </table>
         </div>

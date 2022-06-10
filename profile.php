@@ -110,7 +110,16 @@
         <?php
             $view = "SELECT * FROM tbl_order WHERE `Cust_ID` = '".$_SESSION['ID']."' ORDER BY `created_At` DESC";
             $result = $conn->query($view);
+            $rowcount=$result->num_rows;
+            if($rowcount==0){
+              ?>
+              <tr>
+                <td colspan=7> No Orders</td>
+              </tr>
+              <?php
+            }else{
             while($row=$result->fetch_assoc()){
+              
         ?>
         <tr>
             <td><?php echo $row['Order_ID']?></td>
@@ -120,7 +129,7 @@
             <td><?php echo $row['Cust_ID']?></td>
             <td><?php echo $row['status']?></td>
         </tr>
-        <?php }?>
+        <?php }}?>
     </tbody>
 </table>
 </div>

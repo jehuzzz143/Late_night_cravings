@@ -108,7 +108,15 @@
                 WHERE cust_id = '".$_SESSION['ID']."'";
                 $result = $conn->query($view);
                 $rowcount=$result->num_rows;
+                if($rowcount==0){
+                  ?>
+                  <tr>
+                    <td colspan=7> No Items in Cart</td>
+                  </tr>
+                  <?php
+                }else{
                 while($row=$result->fetch_assoc()){
+                 
         ?>
         <tr>
           <form action="usercart.php?prodid=<?php echo $row['ID'] ?>" method="post">
@@ -123,15 +131,15 @@
           </form>
         </tr>
        
-        <?php }?>
-
-        <tr>
-          <td colspan="8">
-          <?php 
-            if($rowcount==0){
+        <?php }
+        }?>
+        <?php
+        if($rowcount==0){
             }else{
             ?>
-             <a href="checkout.php?custid=<?php echo $_SESSION['ID']?>">
+          <tr>
+            <td colspan="8">
+            <a href="checkout.php?custid=<?php echo $_SESSION['ID']?>">
             <button class="button_add">
               CHECKOUT
             </button>

@@ -21,7 +21,13 @@
 </head>
 <body>
     <!-- navigation -->
-    <?php   include ("navigation-temp.php") ?>
+    <?php   
+    include ("navigation-temp.php");
+    include "../db_connection.php";
+    $view = "SELECT SUM(status = 'PENDING') as pending, count(*) as total_orders, SUM(status = 'Delivered') as complete FROM `tbl_order` WHERE 1";
+            $result = $conn->query($view);
+            while($row=$result->fetch_assoc()){
+    ?>
 
     <section class="home">
         <div class="text">Dashboard </div>
@@ -30,40 +36,47 @@
             <div class="columns">
                 <div class="column parent">
                     <p class="p">TOTAL ORDER</p>
-                    <p class="bold">50</p>
+                    <p class="bold"><?php echo $row['total_orders']; ?></p>
                 </div>
                 <div class="column parent">
                     <p class="p">PENDING ORDER</p>
-                    <p class="bold">500</p>
+                    <p class="bold"><?php echo $row['pending']; ?></p>
                 </div>
                 <div class="column parent">
                     <p class="p">COMPLETE TRANSACTION</p>
-                    <p class="bold">50</p>
+                    <p class="bold"><?php echo $row['complete']; ?></p>
                 </div>
             </div>
         </div>
-        
+        <?php } ?>
     </center>
     <div class="container" style="margin-top:40px;">
         <p class="label text">ON GOING ORDERS</p>
         <div class="columns">
             <div class="column" >
-                <table>
-                    <tr>
-                        <th>ORDER ID</th>
-                        <th>SUBTOTAL</th>
-                        <th>SHIPPING FEE</th>
-                        <th>TOTAL</th>
-                        <th>CUSTOMER_ID</th>
-                        <th>STATUS</th>
-                        <th>ACTION</th>
+                <table style="overflow-y:scroll; display:block; height:450px !important;" >
+                    <tr style="position:sticky; top:0;">
+                        <th style="width:200px">ORDER ID</th>
+                        <th style="width:200px">SUBTOTAL</th>
+                        <th style="width:200px">SHIPPING FEE</th>
+                        <th style="width:200px">TOTAL</th>
+                        <th style="width:200px">CUSTOMER_ID</th>
+                        <th style="width:200px">STATUS</th>
+                        <th style="width:200px; text-align:center;" colspan="3">ACTION</th>
                     
                     </tr>
                     <tr>
                     <?php
-            include "../db_connection.php";
-            $view = "SELECT * FROM tbl_order WHERE (STATUS = 'Accepted') OR (status = 'Declined') ORDER BY status";
+            $view = "SELECT * FROM tbl_order WHERE (STATUS = 'Accepted') OR (status = 'Declined') or (STATUS ='PENDING') ORDER BY status";
             $result = $conn->query($view);
+            $rowcount=$result->num_rows;
+            if($rowcount==0){
+                ?>
+                <tr>
+                  <td colspan=7 style="text-align:center;width:100%;"> No Ongoing Orders</td>
+                </tr>
+                <?php
+              }else{
             while($row=$result->fetch_assoc()){
         ?>
         <tr>
@@ -74,13 +87,17 @@
             <td><?php echo $row['Total_Order_Price']?></td>
             <td><?php echo $row['Cust_ID']?></td>
             <td><?php echo $row['status']?></td>
-            <td colspan = 3>
+            <td>
             <a href="acceptorder.php?orderid=<?php echo $row['Order_ID'];?>">Accept</a>
-            <br><a href="declineorder.php?orderid=<?php echo $row['Order_ID'];?>">Decline</a>
-            <br><a href="deliverorder.php?orderid=<?php echo $row['Order_ID'];?>">Deliver</a></td>
+            </td>
+            <td>
+            <a href="declineorder.php?orderid=<?php echo $row['Order_ID'];?>">Decline</a>
+            </td>
+            <td>
+            <a href="deliverorder.php?orderid=<?php echo $row['Order_ID'];?>">Deliver</a></td>
             </form>
         </tr>
-        <?php }?>
+        <?php }}?>
                 </table>
             </div>
             <!-- <div class="column is-3" style="z-idex:20">
