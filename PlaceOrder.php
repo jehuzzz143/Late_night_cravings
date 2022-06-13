@@ -44,8 +44,6 @@ include "db_connection.php";
                   alert("Order Placed!");
               </script>
           <?php
-$sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Placed Order', NOW())";
-$result2 = $conn->query($sqlLog);
 
         header("refresh:0;url=index.php");
       }else

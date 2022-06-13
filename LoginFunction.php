@@ -18,6 +18,8 @@ include 'db_connection.php';
             
             $row = mysqli_fetch_array($Credresult);
             if($row['user_Email']=="admin"){
+                $sqlLog = "INSERT INTO tbl_logs (log_Description, log_Time) VALUES('Admin Login', NOW())";
+                $result2 = $conn->query($sqlLog);
             ?>
                 <script>
                     alert ("Hello Admin");
@@ -37,8 +39,7 @@ include 'db_connection.php';
                 </script>
                 <?php
             }
-            $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Logged In', NOW())";
-            $result2 = $conn->query($sqlLog);
+        
         }
         else
         {

@@ -433,8 +433,7 @@ if(isset($_POST['addtocart']))
     $insertcart="INSERT INTO `tbl_cart`(`prod_id`, `prod_name`, `prod_desc`, `prod_type`, `prod_image`,`prod_quant`,`cust_id`, `prod_price`)
           SELECT `ID`,`prod_name`,`prod_desc`,`prod_type`,`prod_image`,'$quant','$cust_id',`prod_price` FROM tbl_products WHERE ID = '$prodid'";
     $result = $conn->query($insertcart);
-    $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Added to Cart', NOW())";
-    $result2 = $conn->query($sqlLog);
+    
       if($result==True){
       ?>  
         <script>

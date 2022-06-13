@@ -38,7 +38,7 @@
             <tr>
             <?php
             include "../db_connection.php";
-            $view = "SELECT * FROM tbl_order WHERE status = 'Delivered' ORDER BY status";
+            $view = "SELECT * FROM tbl_logs ORDER BY log_time";
             $result = $conn->query($view);
             $rowcount=$result->num_rows;
             if($rowcount==0){
@@ -52,9 +52,9 @@
         ?>
         <tr>
         <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
-            <td><?php echo $row['Order_ID']?></td>
-            <td><?php echo $row['Sub_total']?></td>
-            <td><?php echo $row['created_At']?></td>
+            <td><?php echo $row['ID']?></td>
+            <td><?php echo $row['log_Description']?></td>
+            <td><?php echo $row['log_Time']?></td>
             </form>
         </tr>
         <?php }}?>
