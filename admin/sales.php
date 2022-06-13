@@ -87,7 +87,7 @@
             while($row=$result->fetch_assoc()){
         ?>
         <tr>
-            <td><?php echo $row['Order_ID']?></td>
+            <td><a target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>

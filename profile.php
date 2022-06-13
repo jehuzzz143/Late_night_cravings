@@ -122,7 +122,7 @@
               
         ?>
         <tr>
-            <td><?php echo $row['Order_ID']?></td>
+            <td><a href="../transView.php?orderid=<?php echo $row['Order_ID'];?>" target="_blank"><?php echo $row['Order_ID']?></a></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>
