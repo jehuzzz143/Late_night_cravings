@@ -10,6 +10,8 @@ if(isset($_POST['deleteProd'])){
     $sqlDelete = "DELETE FROM tbl_products WHERE ID = '$prodid'";
 
     $result1 = $conn->query($sqlDelete);
+    $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Deleted Product', NOW())";
+    $result2 = $conn->query($sqlLog);
     if($result1==True){
 	
         ?>

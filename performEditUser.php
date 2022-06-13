@@ -19,6 +19,8 @@ if(isset($_POST['subEditUser']))
 
 
  $result1 = $conn->query($edit);
+ $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Edited User', NOW())";
+$result2 = $conn->query($sqlLog);
  if($result1==True){
  
      ?>

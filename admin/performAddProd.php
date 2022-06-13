@@ -15,6 +15,9 @@ VALUES('$prodname', '$proddesc', '$prodtype', '$image', $prodprice)";
 
 $result1 = $conn->query($sqlAddProd);
 
+$sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Accepted Order', NOW())";
+$result2 = $conn->query($sqlLog);
+
 if(move_uploaded_file($_FILES['file']['tmp_name'], $target)){
 	$msg="Image uploaded";
 }

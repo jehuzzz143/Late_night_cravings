@@ -37,7 +37,8 @@ include 'db_connection.php';
                 </script>
                 <?php
             }
-            
+            $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Logged In', NOW())";
+            $result2 = $conn->query($sqlLog);
         }
         else
         {

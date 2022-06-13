@@ -15,6 +15,8 @@ if(isset($_POST['subEditProd'])){
     prod_price = $prodprice
     WHERE ID = '$prodid'";
     $result1 = $conn->query($sqlEditProd);
+    $sqlLog = "INSERT into tbl_logs (log_Description, log_Time) VALUES('Edited Product', NOW())";
+    $result2 = $conn->query($sqlLog);
     if($result1==True){
 	
         ?>
