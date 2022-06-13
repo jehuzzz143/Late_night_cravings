@@ -62,7 +62,7 @@
                         <th style="width:200px">TOTAL</th>
                         <th style="width:200px">CUSTOMER_ID</th>
                         <th style="width:200px">STATUS</th>
-                        <th style="width:200px; text-align:center;" colspan="3">ACTION</th>
+                        <th style="width:200px; text-align:center;" colspan="4">ACTION</th>
                     
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@
         ?>
         <tr>
         <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
-            <td><?php echo $row['Order_ID']?></td>
+            <td><a target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></a></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>
