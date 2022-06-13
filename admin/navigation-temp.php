@@ -61,13 +61,13 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon' ></i>
+                    <li class="nav-link">
+                        <a href="audit_log.php">
+                            <i class='bx bx-note icon' ></i>
                             <span class="text nav-text">Likes</span>
                         </a>
                     </li>
-
+                    <!-- 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-wallet icon' ></i>
