@@ -6,6 +6,7 @@
           <ul class="footer-style">
             <li class="text-footer">IMPORTANT</li>
             <li class="text-footer-sub">Prior Payment First is <b>REQUIRED</b></li>
+            <li class="text-footer-sub"><b>STRICTLY</b> Must be a resident of Antipolo Municipality only</li>
           </ul>
         </div>
          <div class="column is-3 footer-padding">

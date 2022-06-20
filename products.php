@@ -10,7 +10,7 @@
 
       <?php
               include "db_connection.php";
-              $view = "Select * from tbl_products LIMIT 8";
+              $view = "Select * from tbl_products order by RAND() LIMIT 8 ";
               $result = $conn->query($view);
               while($row=$result->fetch_assoc()){
 

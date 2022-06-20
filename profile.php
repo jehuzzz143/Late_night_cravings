@@ -27,7 +27,7 @@
     <div class="content container is-full">
       <div class="logo">
 
-        <a href="#" class="change-color">LN's Crazings</a>
+        <a href="#" class="change-color">LN's Cravings</a>
       </div>
       <ul class="menu-list">
         <div class="icon cancel-btn">
@@ -79,7 +79,7 @@
       
        
   <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
-  <p style="font-size:30px; white-space:nowrap;" ><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
+  <p style="font-size:30px; " ><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
   <p class="title"><?php echo $row['user_Contact']?></p>
   <p class="title"><?php echo $row['user_Address']?></p>
   <div style="margin: 24px 0;"> 
@@ -90,7 +90,21 @@
   <?php }?>
 </div>
 
+<div class="card inline" style="padding:1%;  margin-top:280px; justify-content:justify; border-color:red !important;">
 
+        
+    <p > <b style="color:Red"> PAYMENT INSTRUCTION* </b> </p>
+    <ul style="">
+        
+        <li><small style="font-size:11px; float:left;"> <i>Send your payment through Gcash <b> [09279135383] </b> and leave a message with your <b> Order ID </b> shown in your order list table </i></small> </li>
+    </ui>
+       
+
+  </div>
+  
+ 
+
+</div>
 
 <!-- table-->
 
@@ -98,12 +112,12 @@
 <table class="styled-table ">
     <thead  style="top:0px; position:sticky;"  >
         <tr>
-          <th style="width:200px">ORDER ID</th>
-          <th style="width:200px">SUBTOTAL</th>
-          <th style="width:200px">SHIPPING FEE</th>
-          <th style="width:200px">TOTAL</th>
-          <th style="width:200px">CUSTOMER_ID</th>
-          <th style="width:200px">STATUS</th>
+          <th style="width:200px; text-align:center;">ORDER ID</th>
+          <th style="width:200px; text-align:center;">SUBTOTAL</th>
+          <th style="width:200px; text-align:center;">SHIPPING FEE</th>
+          <th style="width:200px; text-align:center;">TOTAL</th>
+          <th style="width:200px; text-align:center;">CUSTOMER_ID</th>
+          <th style="width:200px ; text-align:center;">STATUS</th>
         </tr>
     </thead>
     <tbody>
@@ -122,7 +136,7 @@
               
         ?>
         <tr>
-            <td><a href="../transView.php?orderid=<?php echo $row['Order_ID'];?>" target="_blank"><?php echo $row['Order_ID']?></a></td>
+            <td><a style="text-decoration:underline; color: #459FFF; font-size:16px;" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>" target="_blank"><?php echo $row['Order_ID']?></a></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>

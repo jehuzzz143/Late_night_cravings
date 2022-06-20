@@ -23,7 +23,7 @@ include 'db_connection.php';
             ?>
                 <script>
                     alert ("Hello Admin");
-                    location.href = 'admin/';
+                    location.href = 'admin/dashboard.php';
                 </script>
             <?php
                 

@@ -46,7 +46,7 @@
     <div class="content container is-full">
       <div class="logo">
 
-        <a href="#" class="change-color">LN's Crazings</a>
+        <a href="#" class="change-color">LN's Cravings</a>
       </div>
       <ul class="menu-list">
         <div class="icon cancel-btn">
@@ -112,12 +112,13 @@
   }
 ?>
 <div class="container" style="position:relative; padding-bottom:30px;" >
+
   <div class="columns is-mobile is-multiline is-primary" style="position:relative;">
     <?php
       if($count == 0){
         ?>
           <center>
-            <p style="text-align:center;">No Lunch Available for now</p>
+          
           </center>
         <?php
       }else{
@@ -131,6 +132,7 @@
           $prodprice = $row['prod_price'];
           $prodimgpath = "admin/prod_images/".$prodimage
           ?>
+          
             <div class="column is-2 padding-gall" style="position:relative; padding-bottom:30px; padding-top:10px; margin-left:10px;">
               <form action="orderproducts.php?action=add&id=<?php echo $prodid?>" method="post">
                 <div class="container zoomInside" >
@@ -138,7 +140,7 @@
                 </div>
                   <p class="product-name"> <?php echo $prodname ?> </p>
                   <small class="product-description"><?php echo $proddesc ?></small><br>
-                  <?php echo "PHP ".$prodprice ?>
+                  <b> <?php echo "PHP ".$prodprice ?> </b>
                   <?php
                   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                     // This only show for NOT logged in visitors
@@ -147,7 +149,7 @@
                     ?>
                       <div class="container" style="text-align:center;">
                         <center>
-                          <input type="number" name="quantity" value=1 max=>
+                          <input type="number" name="quantity" value=1 min="1" max="10">
                           <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
                         </center>
                       </div>
@@ -156,11 +158,13 @@
                     ?>
               </form>
             </div>
+            
           <?php  
         }
       }
     ?>
   </div>
+  
 </div>
 <?php 
   $view = "Select * from tbl_products WHERE prod_type ='lunch'";
@@ -210,6 +214,7 @@
               </div>
                 <p class="product-name"> <?php echo $prodname ?> </p>
                 <small class="product-description"><?php echo $proddesc ?></small><br>
+                <b> <?php echo "PHP ".$prodprice ?> </b>
                 <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                   // This only show for NOT logged in visitors
@@ -219,7 +224,7 @@
                     
                     <div class="container" style="text-align:center;">
                         <center>
-                          <input type="number" name="quantity" value=1 max=>
+                          <input type="number"  name="quantity" value=1 min="1" max="10">
                           <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
                         </center>
                       </div>
@@ -288,7 +293,7 @@
               </div>
                 <p class="product-name"> <?php echo $prodname ?> </p>
                 <small class="product-description"><?php echo $proddesc ?></small><br>
-                <?php echo "PHP ".$prodprice ?>
+                <b> <?php echo "PHP ".$prodprice ?> </b> 
                 <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                   // This only show for NOT logged in visitors
@@ -297,7 +302,7 @@
                   ?>
                     <div class="container" style="text-align:center;">
                         <center>
-                          <input type="number" name="quantity" value=1 max=>
+                          <input type="number" name="quantity" value=1 min="1" max="10">
                           <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
                         </center>
                       </div>
@@ -365,6 +370,7 @@
               </div>
                 <p class="product-name"> <?php echo $prodname ?> </p>
                 <small class="product-description"><?php echo $proddesc ?></small><br>
+                <b> <?php echo "PHP ".$prodprice ?> </b> 
                 <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
                   // This only show for NOT logged in visitors
@@ -373,7 +379,7 @@
                   ?>
                     <div class="container" style="text-align:center;">
                         <center>
-                          <input type="number" name="quantity" value=1 max=>
+                          <input type="number" name="quantity" value=1 min="1" max="10">
                           <input class="btn-add" type="submit" name="addtocart" value="Add to Cart">
                         </center>
                       </div>
@@ -433,7 +439,7 @@ if(isset($_POST['addtocart']))
     $insertcart="INSERT INTO `tbl_cart`(`prod_id`, `prod_name`, `prod_desc`, `prod_type`, `prod_image`,`prod_quant`,`cust_id`, `prod_price`)
           SELECT `ID`,`prod_name`,`prod_desc`,`prod_type`,`prod_image`,'$quant','$cust_id',`prod_price` FROM tbl_products WHERE ID = '$prodid'";
     $result = $conn->query($insertcart);
-    
+
       if($result==True){
       ?>  
         <script>

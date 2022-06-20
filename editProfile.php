@@ -40,7 +40,7 @@
     <h1 style="text-align:left;">Email:</h1>
     <input type="text" id = "emailedit" name = "emailedit" value = "<?php echo $row['user_Email']?>"required style="width:100% !important;"><br>
     <h1 style="text-align:left;">Password:</h1>
-    <input type="text" id = "passedit" name = "passedit" value = "<?php echo $row['user_Password']?>"required style="width:100% !important;"><br>
+    <input type="password" id = "passedit" name = "passedit" value = "<?php echo $row['user_Password']?>"required style="width:100% !important;"><br>
     <div style="margin: 24px 0;"> 
       <!-- <a href="#"><i class="fa fa-facebook"></i></a>  -->
     </div>
@@ -82,7 +82,7 @@ if(isset($_POST['subEditUser']))
  
      ?>
      <script>
-      alert("1");
+ 
      alert("Sucessfuly Edited Profile");
      </script>
      <?php
@@ -91,7 +91,7 @@ if(isset($_POST['subEditUser']))
      }else{
          ?>
              <script>
-              alert("2");
+    
         alert(<?php echo ''.$conn->error; ?>);
         </script>
          <?php

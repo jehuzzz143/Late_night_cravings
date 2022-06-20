@@ -2,7 +2,7 @@
     <div class="content container is-full">
       <div class="logo">
 
-        <a href="#" class="change-color">LN's Crazings</a>
+        <a href="#" class="change-color">LN's Cravings</a>
       </div>
       <ul class="menu-list">
         <div class="icon cancel-btn">

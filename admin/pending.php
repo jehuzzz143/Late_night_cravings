@@ -28,14 +28,14 @@
         <div class="text">ORDERS</div>
       
         <div>
-        <table>
-            <tr>
-                <th>ORDER ID</th>
-                <th>CUSTOMER ID</th>
-                <th>SUBTOTAL</th>
-                <th>SHIPPING FEE</th>
-                <th>TOTAL</th>
-                <th colspan="2">Status</th>
+        <table style="overflow-y:scroll; display:block; height:550px !important; margin-top:100px;">
+            <tr style="position:sticky; top:0;">
+                <th style="width:200px; white-space: nowrap;">ORDER ID</th>
+                <th style="width:200px; white-space: nowrap;">CUSTOMER ID</th>
+                <th style="width:200px; white-space: nowrap;">SUBTOTAL</th>
+                <th style="width:200px; white-space: nowrap;">SHIPPING FEE</th>
+                <th style="width:200px; white-space: nowrap;">TOTAL</th>
+                <th style="width:200px" colspan="2">Status</th>
             
             </tr>
             <tr>
@@ -55,7 +55,7 @@
         ?>
         <tr>
         <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
-            <td><a target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
+            <td><a  target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>

@@ -27,7 +27,7 @@
     <div class="content container is-full">
       <div class="logo">
 
-        <a href="#" class="change-color">LN's Crazings</a>
+        <a href="#" class="change-color">LN's Cravings</a>
       </div>
       <ul class="menu-list">
         <div class="icon cancel-btn">
@@ -75,7 +75,7 @@
       
        
   <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
-  <p style="font-size:30px; white-space:nowrap;"><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
+  <p style="font-size:30px; "><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
   <p class="title"><?php echo $row['user_Contact']?></p>
   <p class="title"><?php echo $row['user_Address']?></p>
   <div style="margin: 24px 0;"> 

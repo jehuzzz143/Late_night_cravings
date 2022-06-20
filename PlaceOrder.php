@@ -45,6 +45,7 @@ include "db_connection.php";
               </script>
           <?php
 
+
         header("refresh:0;url=index.php");
       }else
       {

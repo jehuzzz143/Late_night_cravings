@@ -33,13 +33,27 @@
                 <div class="columns">
                 <form method="post" action="sales.php">
                         <div class="column ">
-                            <p class="">Starting</p>
-                            <input type="date"  name="start"  value="" required>
+                            <p class="" style="text-align:left;">Starting</p>
+                            <input type="date"  name="start"  value="" required style="color:grey;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;">
                             
                         </div>
                         <div class="column ">
-                            <p class="">Ending</p>
-                            <input type="date"  name="end"  value="" required>
+                            <p class="" style="text-align:left;">Ending</p>
+                            <input type="date"  name="end"  value="" required style="color:grey;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;">
                         
                         </div>
                         <div class="column ">
@@ -87,7 +101,7 @@
             while($row=$result->fetch_assoc()){
         ?>
         <tr>
-            <td><a target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
+            <td><?php echo $row['Order_ID']?></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>
@@ -124,7 +138,8 @@ include "../db_connection.php";
             while($row=$result->fetch_assoc()){
         ?>
         <tr>
-            <td><?php echo $row['Order_ID']?></td>
+            <td><a style="font-size:16px; color:#459FFF; text-decoration:underline;" target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
+           
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>

@@ -19,7 +19,6 @@ if(isset($_POST['subEditUser']))
 
 
  $result1 = $conn->query($edit);
- 
  if($result1==True){
  
      ?>

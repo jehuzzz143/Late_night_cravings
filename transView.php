@@ -156,7 +156,7 @@
             </div>
             <div class="column" >
                 <p class="date1">To:<small style="font-size:16px; font-weight:400; "><br><br>&nbsp<?php 
-                $prodname = "SELECT `user_Address` as address FROM `tbl_users` WHERE user_ID = 'USER2cbaec58'";
+                $prodname = "SELECT `user_Address` as address FROM `tbl_users` WHERE user_ID = '$customer'";
                 $resultname = $conn->query($prodname);
                 while ($rowname = mysqli_fetch_array($resultname)) {
                     echo $rowname['address'];
@@ -225,7 +225,7 @@
             <div class="row">
                 <div class="column" style="padding-left:10px;" >
                     <p  style="font-size:16px; font-weight:bold; ">Payment Method:<small style="font-size:16px; font-weight:400; text-decoration: underline;">&nbsp;&nbsp; [ Gcash ] &nbsp;&nbsp;</small></p>
-                    <p  style="font-size:16px; font-weight:bold; ">Payment Method:<small style="font-size:16px; font-weight:400; text-decoration: underline;">&nbsp;&nbsp; <?php echo $row['status']; ?> &nbsp;&nbsp;</small></p>
+                    <p  style="font-size:16px; font-weight:bold; ">Order Status &nbsp;&nbsp;:<small style="font-size:16px; font-weight:400; text-decoration: underline;">&nbsp;&nbsp;&nbsp; <?php echo $row['status']; ?> &nbsp;&nbsp;&nbsp;</small></p>
            
                 </div>
                 <div class="column" >
@@ -240,7 +240,7 @@
                 </div>
                 <div class="column" >
                     <p  style="font-size:16px; font-weight:bold; ">Thank You For Trusting Us!</p>
-                    <img src="" style="text-align:center;" alt="Business Icon" width="50" height="50">  </img>
+                    <img src="admin/css/chef.png" style="text-align:center;" alt="Business Icon" width="50" height="50">  </img>
                 
                 </div>
             </div>

@@ -74,7 +74,7 @@
       
        
   <!-- <img src="css/photos/usericon.png" alt="user" style="width:50%"> -->
-  <p style="font-size:30px; white-space:nowrap;"><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
+  <p style="font-size:30px; "><b><?php echo strtoupper($row['user_Fullname']) ?></b></p>
   <p class="title"><?php echo $row['user_Contact']?></p>
   <p class="title"><?php echo $row['user_Address']?></p>
   <div style="margin: 24px 0;"> 
@@ -84,6 +84,23 @@
  
   <?php }?>
 </div>
+<div class="card inline" style="padding:1%;  margin-top:280px; justify-content:justify; border-color:red !important;">
+
+        
+    <p > <b style="color:Red"> IMPORTANT NOTE* </b> </p>
+    <ul style="">
+        <li><small style="justify-content:center; font-size:10px; float:left;"  > Must be a resident of Antipolo municipality; otherwise, order will automatically <b> declined </b>.  </small></li>
+        <li><small style="justify-content:center; font-size:10px; float:left;"> <br> <b>" Orders will be processed once the payment has been settled. "</b> <br><i> Payment instructions are displayed in the <a style="font-size:10px; text-decoration:underline; color:#459FFF;" href="profile.php"> profile tab. </a> </i> </small></li>
+        <li></li>
+    </ui>
+       
+
+  </div>
+  
+ 
+
+</div>
+
 
 <!-- table style="width:900px !important;" -->
 <p class="table-title" >Checkout</p>

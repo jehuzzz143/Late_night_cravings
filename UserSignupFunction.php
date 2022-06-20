@@ -33,7 +33,6 @@ include 'db_connection.php';
                     alert ("Record Added!");
                 </script>
             <?php
-           
         }else{
             ?>
                 <script>

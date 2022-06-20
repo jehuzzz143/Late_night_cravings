@@ -57,16 +57,69 @@
     </center> -->
     <br><br>
 <!-- Login Form -->
-  <?php 
-    include("login.php");
-  ?>
+  <div class="container  login-container" id="login"  style="display:none;">
+        
+        <p class="login-close" onClick="loginClose()"><ion-icon name="close-outline"></ion-icon></p>
+        <p class="title">Login is required before purchasing </p>
+
+        <div class="columns">
+            <div class="column">
+            <form method='POST' action="">
+                <label for="User-First_Name">Email:</label>
+                <input type="text" name="User-Email_Address">
+                <label for="User-First_Name">Password:</label>
+                <input type="password" name="User-Password">
+                <input class="loginbtn" type="Submit" name="BtnLogin" value="Sign In"></input>
+
+                <p style="color:black;"> Don't have Account yet? <a id="myBtn" class="signup"  onClick="signup()"> Sign up here.</a></p>
+                
+            </form>
+            </div>
+            <div class="column" id="signup" style="display:none;margin-top:-60px;">
+                <p class="login-close" onClick="signupclose()"><ion-icon name="close-outline"></ion-icon></i></p>
+                <?php 
+                    include("UserSignup.php");
+                ?>
+            </div>
+            <div class="column" id="login_Picture" style="margin-top:-60px;">
+                <center>
+                <img class="login-photo" src="css/photos/pic.png" alt="food picture">
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            
+            document.getElementById("login").classList.add("unhide");
+            document.getElementById("login").classList.remove("hide");
+        }
+        function loginClose(){
+            document.getElementById("login").classList.remove("unhide");
+            document.getElementById("login").classList.add("hide");
+        }
+        function signup(){
+            document.getElementById("signup").classList.add("unhide");
+            document.getElementById("login").classList.remove("hide");
+            document.getElementById("login_Picture").classList.add("hide");
+            document.getElementById("login_Picture").classList.remove("unhide");
+          
+        }
+        function signupclose(){
+            document.getElementById("signup").classList.remove("unhide");
+            document.getElementById("login").classList.add("hide");
+            document.getElementById("login_Picture").classList.add("unhide");
+            document.getElementById("login_Picture").classList.remove("hide");
+        }
+    </script>
 <!-- about -->
-  <div class="container" style="padding:0;">
+  <div class="container" style="padding:0; padding-bottom:50px;">
     <div class="about" id="about" style="padding:0px;">
       <div class="container" >
         <div class="title">Background History </div>
-        <p>We started out as karinderya we transitioned to "Late Night Cravings" to cope with the new normal. We sleep in the Morning, attend classes in the Afternoon and we cook and deliver foods during night time. Our main customer target are those who are looking for specific food when all other restaurants are either closed or unavailable for delivery.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit hic excepturi nobis id, eos dolor libero, nam assumenda, at culpa quos perspiciatis ratione ea modi! Natus sapiente a, explicabo sit quisquam eligendi esse provident eos enim doloremque blanditiis aut placeat veniam, libero nostrum quae. Ipsam, iste reprehenderit minima accusantium illo dolorem recusandae, ipsa autem quidem reiciendis a mollitia sit tenetur.</p>
+        <p style="padding-bottom:20px;">We started out as karinderya we transitioned to "Late Night Cravings" to cope with the new normal. We sleep in the Morning, attend classes in the Afternoon and we cook and deliver foods during night time. Our main customer target are those who are looking for specific food when all other restaurants are either closed or unavailable for delivery.</p>
+       
         </div>
         <div id="menu" style="opacity:0; margin-top:-100px;">  </div>
       </div>
@@ -206,3 +259,59 @@
 </script>
 </body>
 </html>
+<?php
+include 'db_connection.php';
+
+
+    if(isset($_POST['BtnLogin']))
+    {
+        $Email = $_POST['User-Email_Address'];
+        $Password = $_POST['User-Password'];
+
+        $CredChk = "SELECT * FROM tbl_users WHERE user_Email = '$Email' AND user_Password = '$Password'";
+        $Credresult = $conn->query($CredChk);
+        $Credresult -> num_rows;
+        if($Credresult -> num_rows > 0)
+        {
+            session_start();
+            $_SESSION["loggedin"] = true;
+            $_SESSION["usertype"] = "admin";
+            
+            $row = mysqli_fetch_array($Credresult);
+            if($row['user_Email']=="admin"){
+                $sqlLog = "INSERT INTO tbl_logs (log_Description, log_Time) VALUES('Admin Login', NOW())";
+                $result2 = $conn->query($sqlLog);
+            ?>
+                <script>
+                    alert ("Hello Admin");
+                    location.href = 'admin/dashboard.php';
+                </script>
+            <?php
+                
+            }
+            else{   
+                $_SESSION['ID'] = $row['user_ID'];
+                $_SESSION['Fullname'] = $row['user_Fullname'];
+                $_SESSION["loggedin"] = true;
+                ?>
+                <script>
+                   alert ("Hello <?php echo $_SESSION['Fullname'] ?>");
+                   location.href = '';
+                </script>
+                <?php
+            }
+        
+        }
+        else
+        {
+            ?>
+                <script>
+                    alert ("Email or Password is Incorrect!");
+                </script>
+            <?php
+            
+        }
+
+    }
+
+?>

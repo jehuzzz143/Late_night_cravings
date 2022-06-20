@@ -62,12 +62,12 @@
                         <th style="width:200px">TOTAL</th>
                         <th style="width:200px">CUSTOMER_ID</th>
                         <th style="width:200px">STATUS</th>
-                        <th style="width:200px; text-align:center;" colspan="4">ACTION</th>
+                        <th style="width:200px; text-align:center;" colspan="2">ACTION</th>
                     
                     </tr>
                     <tr>
                     <?php
-            $view = "SELECT * FROM tbl_order WHERE (STATUS = 'Accepted') OR (status = 'Declined') or (STATUS ='PENDING') ORDER BY status";
+            $view = "SELECT * FROM tbl_order WHERE (STATUS = 'Accepted') or (STATUS ='PENDING') ORDER BY status";
             $result = $conn->query($view);
             $rowcount=$result->num_rows;
             if($rowcount==0){
@@ -81,20 +81,34 @@
         ?>
         <tr>
         <form action="acceptorder.php?orderid=<?php echo $row['Order_ID'] ?>" method="post">
-            <td><a target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></a></td>
+             <td><a style="font-size:16px; color:#459FFF; text-decoration:underline;" target="_blank" href="../transView.php?orderid=<?php echo $row['Order_ID'];?>"><?php echo $row['Order_ID']?></td>
             <td><?php echo $row['Sub_total']?></td>
             <td><?php echo $row['Shipping_fee']?></td>
             <td><?php echo $row['Total_Order_Price']?></td>
             <td><?php echo $row['Cust_ID']?></td>
             <td><?php echo $row['status']?></td>
-            <td>
-            <a href="acceptorder.php?orderid=<?php echo $row['Order_ID'];?>">Accept</a>
-            </td>
+            
+            <?php 
+            if($row['status'] == "Pending"){
+                ?>
+                    <td><a href="acceptorder.php?orderid=<?php echo $row['Order_ID'];?>">Accept</a></td>
+                <?php
+
+            }else{
+                ?>
+                    <td><a href="deliverorder.php?orderid=<?php echo $row['Order_ID'];?>">Deliver</a></td>
+                <?php
+            }
+            ?>
+            
+            
             <td>
             <a href="declineorder.php?orderid=<?php echo $row['Order_ID'];?>">Decline</a>
             </td>
-            <td>
-            <a href="deliverorder.php?orderid=<?php echo $row['Order_ID'];?>">Deliver</a></td>
+            
+            
+
+            
             </form>
         </tr>
         <?php }}?>

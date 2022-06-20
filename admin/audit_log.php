@@ -28,11 +28,11 @@
         <div class="text">AUDIT LOGS</div>
       
         <div>
-        <table>
-            <tr>
-                <th>LOG ID</th>
-                <th>DESCRIPTION</th>
-                <th>LOG TIME</th>
+        <table style="overflow-y:scroll; display:block; height:650px !important; margin-top:100px; width:600px;" >
+            <tr style="position:sticky; top:0;">
+                <th style="width:200px;">LOG ID</th>
+                <th style="width:200px;">DESCRIPTION</th>
+                <th style="width:200px;">LOG TIME</th>
             
             </tr>
             <tr>
@@ -44,7 +44,7 @@
             if($rowcount==0){
                 ?>
                 <tr>
-                  <td colspan=7 style="text-align:center;width:100%;"> No Ongoing Orders</td>
+                  <td colspan=7 style="text-align:center;width:100%;"> No Logs</td>
                 </tr>
                 <?php
               }else{
